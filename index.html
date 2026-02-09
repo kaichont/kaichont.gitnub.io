@@ -1,0 +1,2774 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Идеи для проектов - 10 класс</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&family=Source+Code+Pro:wght@300;400;600&family=Cinzel:wght@400;700&family=Russo+One&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Marck+Script&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --paper: #fffef7;
+        }
+        
+        body {
+            font-family: 'Caveat', cursive;
+            background-color: var(--paper);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(200, 200, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 200, 255, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: center;
+            letter-spacing: 0.5px;
+            font-style: italic;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), #1a2530);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'Marck Script', cursive;
+            letter-spacing: 1px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            filter: drop-shadow(0 0 5px rgba(231, 76, 60, 0.5));
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            padding: 8px 0;
+            position: relative;
+            font-family: 'Caveat', cursive;
+            font-style: italic;
+        }
+        
+        nav a:hover {
+            color: var(--accent);
+        }
+        
+        nav a.active {
+            color: var(--accent);
+        }
+        
+        nav a.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 3px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        /* Main page */
+        .main-page {
+            padding: 4rem 0;
+            min-height: calc(100vh - 120px);
+            position: relative;
+            background-color: rgba(255, 254, 247, 0.95);
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 1200px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+            font-family: 'Marck Script', cursive;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+        }
+        
+        .main-content p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+            font-style: italic;
+        }
+        
+        .main-content .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .category-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 4rem;
+        }
+        
+        .category-btn {
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 180px;
+            transform: none !important;
+        }
+        
+        .category-btn:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-btn i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Стили кнопок категорий */
+        .category-btn.programming {
+            background: linear-gradient(135deg, #0f3460, #1a1a2e);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .category-btn.literature {
+            background-color: #fdf6e3;
+            color: #5d4037;
+            border: 2px solid #d7ccc8;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .category-btn.history {
+            background-color: #efebe9;
+            color: #4a148c;
+            border: 2px solid #d1c4e9;
+            font-family: 'Cinzel', serif;
+        }
+        
+        .category-btn.biology {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            border: 2px solid #a5d6a7;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .category-btn.math {
+            background: linear-gradient(135deg, #1565c0, #0d47a1);
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .category-btn.sports {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            font-family: 'Russo One', sans-serif;
+        }
+        
+        .category-btn.mixed {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Category page */
+        .category-page {
+            padding: 3rem 0;
+            min-height: calc(100vh - 120px);
+            display: none;
+        }
+        
+        /* Программирование - уникальный фон и шрифт */
+        #programmingPage {
+            background-color: #0f172a;
+            color: white;
+            font-family: 'Source Code Pro', monospace;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #programmingPage:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 184, 148, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 184, 148, 0.05) 0%, transparent 20%),
+                repeating-linear-gradient(0deg, rgba(0, 184, 148, 0.03) 0px, rgba(0, 184, 148, 0.03) 1px, transparent 1px, transparent 20px),
+                repeating-linear-gradient(90deg, rgba(0, 184, 148, 0.03) 0px, rgba(0, 184, 148, 0.03) 1px, transparent 1px, transparent 20px);
+            background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px;
+            background-position: 0 0, 0 0, 0 0, 0 0;
+            pointer-events: none;
+        }
+        
+        #programmingPage .page-title,
+        #programmingPage .page-description,
+        #programmingPage .idea-title,
+        #programmingPage .idea-description,
+        #programmingPage .idea-steps h4,
+        #programmingPage .idea-steps li,
+        #programmingPage .generator-title,
+        #programmingPage p {
+            color: white;
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        #programmingPage .idea-card {
+            background-color: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 184, 148, 0.3);
+        }
+        
+        #programmingPage .idea-category {
+            background-color: rgba(0, 184, 148, 0.3);
+            color: #00b894;
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        #programmingPage .idea-steps {
+            background-color: rgba(30, 41, 59, 0.9);
+            border-left: 4px solid #00b894;
+        }
+        
+        #programmingPage .category-generator {
+            background-color: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(0, 184, 148, 0.3);
+        }
+        
+        #programmingPage .generator-result {
+            background-color: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(0, 184, 148, 0.3);
+        }
+        
+        #programmingPage .generator-btn {
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        /* Русский язык и литература - уникальный фон и шрифт */
+        #literaturePage {
+            background-color: #fdf6e3;
+            color: #5d4037;
+            font-family: 'Times New Roman', serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #literaturePage:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+                linear-gradient(#eee .1em, transparent .1em);
+            background-size: 100% 1.2em;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        
+        #literaturePage .page-title,
+        #literaturePage .page-description,
+        #literaturePage .idea-title,
+        #literaturePage .idea-description,
+        #literaturePage .idea-steps h4,
+        #literaturePage .idea-steps li,
+        #literaturePage .generator-title,
+        #literaturePage p {
+            color: #5d4037;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        #literaturePage .idea-card {
+            background-color: rgba(255, 253, 245, 0.9);
+            border: 1px solid #d7ccc8;
+        }
+        
+        #literaturePage .idea-category {
+            background-color: rgba(121, 85, 72, 0.2);
+            color: #5d4037;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        #literaturePage .idea-steps {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-left: 4px solid #8d6e63;
+        }
+        
+        #literaturePage .category-generator {
+            background-color: rgba(255, 253, 245, 0.8);
+            border: 1px solid #d7ccc8;
+        }
+        
+        #literaturePage .generator-result {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #d7ccc8;
+        }
+        
+        #literaturePage .generator-btn {
+            font-family: 'Times New Roman', serif;
+        }
+        
+        /* История и обществознание - уникальный фон и шрифт */
+        #historyPage {
+            background-color: #f3e5f5;
+            color: #4a148c;
+            font-family: 'Cinzel', serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #historyPage:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(156, 39, 176, 0.05) 0%, transparent 15%),
+                radial-gradient(circle at 80% 70%, rgba(156, 39, 176, 0.05) 0%, transparent 15%),
+                repeating-linear-gradient(45deg, rgba(156, 39, 176, 0.03) 0px, rgba(156, 39, 176, 0.03) 2px, transparent 2px, transparent 40px),
+                repeating-linear-gradient(-45deg, rgba(156, 39, 176, 0.03) 0px, rgba(156, 39, 176, 0.03) 2px, transparent 2px, transparent 40px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            pointer-events: none;
+        }
+        
+        #historyPage .page-title,
+        #historyPage .page-description,
+        #historyPage .idea-title,
+        #historyPage .idea-description,
+        #historyPage .idea-steps h4,
+        #historyPage .idea-steps li,
+        #historyPage .generator-title,
+        #historyPage p {
+            color: #4a148c;
+            font-family: 'Cinzel', serif;
+        }
+        
+        #historyPage .idea-card {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid #d1c4e9;
+        }
+        
+        #historyPage .idea-category {
+            background-color: rgba(156, 39, 176, 0.2);
+            color: #7b1fa2;
+            font-family: 'Cinzel', serif;
+        }
+        
+        #historyPage .idea-steps {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-left: 4px solid #7b1fa2;
+        }
+        
+        #historyPage .category-generator {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #d1c4e9;
+        }
+        
+        #historyPage .generator-result {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: 1px solid #d1c4e9;
+        }
+        
+        #historyPage .generator-btn {
+            font-family: 'Cinzel', serif;
+        }
+        
+        /* Биология и химия - уникальный фон и шрифт */
+        #biologyPage {
+            background-color: #e8f5e9;
+            color: #1b5e20;
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #biologyPage:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(76, 175, 80, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 85% 85%, rgba(76, 175, 80, 0.05) 0%, transparent 20%),
+                repeating-linear-gradient(0deg, transparent 0px, transparent 19px, rgba(76, 175, 80, 0.05) 19px, rgba(76, 175, 80, 0.05) 20px);
+            background-size: 100% 100%, 100% 100%, 100% 20px;
+            pointer-events: none;
+        }
+        
+        #biologyPage .page-title,
+        #biologyPage .page-description,
+        #biologyPage .idea-title,
+        #biologyPage .idea-description,
+        #biologyPage .idea-steps h4,
+        #biologyPage .idea-steps li,
+        #biologyPage .generator-title,
+        #biologyPage p {
+            color: #1b5e20;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        #biologyPage .idea-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #a5d6a7;
+        }
+        
+        #biologyPage .idea-category {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: #2e7d32;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        #biologyPage .idea-steps {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-left: 4px solid #2e7d32;
+        }
+        
+        #biologyPage .category-generator {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #a5d6a7;
+        }
+        
+        #biologyPage .generator-result {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #a5d6a7;
+        }
+        
+        #biologyPage .generator-btn {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        /* Математика и физика - уникальный фон и шрифт */
+        #mathPage {
+            background-color: #0d47a1;
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #mathPage:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 30% 20%, rgba(33, 150, 243, 0.1) 0%, transparent 25%),
+                radial-gradient(circle at 70% 80%, rgba(33, 150, 243, 0.1) 0%, transparent 25%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(33, 150, 243, 0.05) 10px, rgba(33, 150, 243, 0.05) 20px);
+            background-size: 100% 100%, 100% 100%, 20px 20px;
+            pointer-events: none;
+        }
+        
+        #mathPage .page-title,
+        #mathPage .page-description,
+        #mathPage .idea-title,
+        #mathPage .idea-description,
+        #mathPage .idea-steps h4,
+        #mathPage .idea-steps li,
+        #mathPage .generator-title,
+        #mathPage p {
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        #mathPage .idea-card {
+            background-color: rgba(13, 71, 161, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(33, 150, 243, 0.5);
+        }
+        
+        #mathPage .idea-category {
+            background-color: rgba(33, 150, 243, 0.3);
+            color: #81d4fa;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        #mathPage .idea-steps {
+            background-color: rgba(13, 71, 161, 0.9);
+            border-left: 4px solid #81d4fa;
+        }
+        
+        #mathPage .category-generator {
+            background-color: rgba(13, 71, 161, 0.8);
+            border: 1px solid rgba(33, 150, 243, 0.5);
+        }
+        
+        #mathPage .generator-result {
+            background-color: rgba(13, 71, 161, 0.9);
+            border: 1px solid rgba(33, 150, 243, 0.5);
+        }
+        
+        #mathPage .generator-btn {
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        /* ОБЖ и физкультура - уникальный фон и шрифт */
+        #sportsPage {
+            background-color: #ff9800;
+            color: white;
+            font-family: 'Russo One', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #sportsPage:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(255, 255, 255, 0.1) 15px, rgba(255, 255, 255, 0.1) 16px),
+                repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(255, 255, 255, 0.1) 15px, rgba(255, 255, 255, 0.1) 16px);
+            background-size: 100% 100%, 100% 100%, 16px 16px, 16px 16px;
+            pointer-events: none;
+        }
+        
+        #sportsPage .page-title,
+        #sportsPage .page-description,
+        #sportsPage .idea-title,
+        #sportsPage .idea-description,
+        #sportsPage .idea-steps h4,
+        #sportsPage .idea-steps li,
+        #sportsPage .generator-title,
+        #sportsPage p {
+            color: white;
+            font-family: 'Russo One', sans-serif;
+        }
+        
+        #sportsPage .idea-card {
+            background-color: rgba(255, 152, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        #sportsPage .idea-category {
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #ffe082;
+            font-family: 'Russo One', sans-serif;
+        }
+        
+        #sportsPage .idea-steps {
+            background-color: rgba(255, 152, 0, 0.9);
+            border-left: 4px solid #ffe082;
+        }
+        
+        #sportsPage .category-generator {
+            background-color: rgba(255, 152, 0, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        #sportsPage .generator-result {
+            background-color: rgba(255, 152, 0, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        #sportsPage .generator-btn {
+            font-family: 'Russo One', sans-serif;
+        }
+        
+        /* Смешанные проекты - уникальный фон и шрифт */
+        #mixedPage {
+            background-color: #8e44ad;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #mixedPage:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(155, 89, 182, 0.2) 0%, transparent 50%),
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(155, 89, 182, 0.1) 20px, rgba(155, 89, 182, 0.1) 40px),
+                repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(155, 89, 182, 0.1) 20px, rgba(155, 89, 182, 0.1) 40px);
+            background-size: 100% 100%, 40px 40px, 40px 40px;
+            pointer-events: none;
+        }
+        
+        #mixedPage .page-title,
+        #mixedPage .page-description,
+        #mixedPage .idea-title,
+        #mixedPage .idea-description,
+        #mixedPage .idea-steps h4,
+        #mixedPage .idea-steps li,
+        #mixedPage .generator-title,
+        #mixedPage p {
+            color: white;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        #mixedPage .idea-card {
+            background-color: rgba(142, 68, 173, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(215, 189, 226, 0.5);
+        }
+        
+        #mixedPage .idea-category {
+            background-color: rgba(155, 89, 182, 0.4);
+            color: #d7bde2;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        #mixedPage .idea-steps {
+            background-color: rgba(142, 68, 173, 0.9);
+            border-left: 4px solid #d7bde2;
+        }
+        
+        #mixedPage .category-generator {
+            background-color: rgba(142, 68, 173, 0.85);
+            border: 1px solid rgba(215, 189, 226, 0.5);
+        }
+        
+        #mixedPage .generator-result {
+            background-color: rgba(142, 68, 173, 0.9);
+            border: 1px solid rgba(215, 189, 226, 0.5);
+        }
+        
+        #mixedPage .generator-btn {
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .page-title {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .page-description {
+            font-size: 1.8rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .back-btn {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Caveat', cursive;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            transform: none !important;
+        }
+        
+        #literaturePage .back-btn,
+        #historyPage .back-btn,
+        #biologyPage .back-btn {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: inherit;
+        }
+        
+        .back-btn:hover {
+            background-color: var(--accent);
+        }
+        
+        /* Ideas grid */
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+        
+        .idea-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            transform: none !important;
+        }
+        
+        .idea-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+        
+        .idea-card:hover {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .idea-header {
+            padding: 1.8rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .idea-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .idea-category {
+            display: inline-block;
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .idea-body {
+            padding: 1.8rem;
+            flex-grow: 1;
+        }
+        
+        .idea-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.5rem;
+        }
+        
+        .idea-steps {
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .idea-steps h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+        
+        .idea-steps ol {
+            margin-left: 1.5rem;
+            font-size: 1.4rem;
+        }
+        
+        .idea-steps li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Idea generator for category */
+        .category-generator {
+            padding: 3rem 0;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .generator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .generator-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .generator-result {
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+        }
+        
+        .generated-idea-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .generated-idea-description {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.5rem;
+        }
+        
+        .generator-btn {
+            padding: 12px 35px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 15px rgba(231, 76, 60, 0.3);
+            transform: none !important;
+        }
+        
+        .generator-btn:hover {
+            background-color: #c0392b;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #1a2530;
+            color: white;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            font-family: 'Marck Script', cursive;
+            font-style: italic;
+        }
+        
+        .footer-section p {
+            color: #b0b0b0;
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.3rem;
+            font-style: italic;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2c3e50;
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+        
+        /* Дисциплины на главной странице */
+        .disciplines-list {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .disciplines-list h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-family: 'Marck Script', cursive;
+            font-style: italic;
+        }
+        
+        .disciplines {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+        
+        .discipline-item {
+            padding: 8px 20px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 20px;
+            font-size: 1.4rem;
+            color: var(--primary);
+            font-style: italic;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .main-content h1 {
+                font-size: 3rem;
+            }
+            
+            .ideas-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            
+            .page-title {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .main-content {
+                padding: 0 1rem;
+            }
+            
+            .main-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-content p {
+                font-size: 1.5rem;
+            }
+            
+            .category-buttons {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .ideas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .back-btn {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                margin-bottom: 2rem;
+                display: inline-block;
+            }
+            
+            .page-header {
+                text-align: left;
+            }
+            
+            .page-title {
+                font-size: 2.5rem;
+            }
+            
+            .disciplines {
+                gap: 10px;
+            }
+            
+            .discipline-item {
+                font-size: 1.2rem;
+                padding: 6px 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .main-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .category-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-btn {
+                min-height: 150px;
+                font-size: 1.3rem;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .idea-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            .idea-title {
+                font-size: 1.6rem;
+            }
+            
+            .disciplines-list h3 {
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* Эффект тетрадного листа */
+        .paper-effect {
+            position: relative;
+        }
+        
+        .paper-effect:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 0, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Проектные идеи</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" id="homeLink" class="active">Главная</a></li>
+                        <li><a href="#" id="categoriesLink">Категории</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main page -->
+    <section class="main-page paper-effect" id="mainPage">
+        <div class="container">
+            <div class="main-content">
+                <h1>Идеи для проектов в 10 классе</h1>
+                
+                <p>На этом сайте вы найдете проекты по разным предметам: от <span class="highlight">программирования</span> до <span class="highlight">литературы</span>, от <span class="highlight">биологии</span> до <span class="highlight">физкультуры</span>. Также есть <span class="highlight">смешанные проекты</span>, которые объединяют несколько предметов сразу!</p>
+                
+                <p>Каждая идея содержит не только описание, но и первые шаги для реализации. Так будет проще начать работу над проектом.</p>
+                
+                <p>Выберите категорию, которая вам интересна, и посмотрите, какие идеи там есть. Если не нашли подходящей - можно сгенерировать случайную идею прямо на сайте!</p>
+                
+                <div class="category-buttons">
+                    <a href="#" class="category-btn programming" data-category="programming">
+                        <i class="fas fa-code"></i>
+                        Программирование
+                    </a>
+                    
+                    <a href="#" class="category-btn literature" data-category="literature">
+                        <i class="fas fa-book-open"></i>
+                        Русский язык и литература
+                    </a>
+                    
+                    <a href="#" class="category-btn history" data-category="history">
+                        <i class="fas fa-landmark"></i>
+                        История и обществознание
+                    </a>
+                    
+                    <a href="#" class="category-btn biology" data-category="biology">
+                        <i class="fas fa-dna"></i>
+                        Биология и химия
+                    </a>
+                    
+                    <a href="#" class="category-btn math" data-category="math">
+                        <i class="fas fa-square-root-alt"></i>
+                        Математика и физика
+                    </a>
+                    
+                    <a href="#" class="category-btn sports" data-category="sports">
+                        <i class="fas fa-running"></i>
+                        ОБЖ и физкультура
+                    </a>
+                    
+                    <a href="#" class="category-btn mixed" data-category="mixed">
+                        <i class="fas fa-project-diagram"></i>
+                        Межпредметные проекты
+                    </a>
+                </div>
+                
+                <div class="disciplines-list">
+                    <h3>Дисциплины, представленные на сайте:</h3>
+                    <div class="disciplines">
+                        <span class="discipline-item">Программирование</span>
+                        <span class="discipline-item">Русский язык / Литература</span>
+                        <span class="discipline-item">История / Обществознание</span>
+                        <span class="discipline-item">Биология / Химия</span>
+                        <span class="discipline-item">Математика / Физика</span>
+                        <span class="discipline-item">ОБЖ / Физкультура</span>
+                        <span class="discipline-item">Межпредметные проекты</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category pages -->
+    
+    <!-- Программирование -->
+    <section class="category-page" id="programmingPage">
+        <div class="container">
+            <div class="page-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <h1 class="page-title">Программирование</h1>
+                <p class="page-description">Идеи проектов, связанные с программированием, веб-разработкой, созданием приложений и игр.</p>
+            </div>
+            
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Система управления школьными мероприятиями</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать веб-платформу для планирования и организации школьных мероприятий: регистрация участников, расписание, оповещения, сбор feedback.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Проанализировать потребности организаторов мероприятий.</li>
+                                <li>Спроектировать базу данных и интерфейс.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Плагин для браузера по блокировке отвлекающих сайтов</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Создать расширение для браузера, которое помогает сосредоточиться на учебе, блокируя доступ к социальным сетям и развлекательным сайтам в заданное время.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить API браузерных расширений.</li>
+                                <li>Определить список сайтов для блокировки и настройки таймингов.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Программа для создания расписания уроков</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать программу, которая помогает составлять школьное расписание с учётом всех требований: нагрузка учителей, кабинеты, особенности классов.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить алгоритмы оптимизации и расписания.</li>
+                                <li>Собрать требования к школьному расписанию.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Образовательная игра по математике</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать компьютерную игру, которая помогает изучать математику в интерактивной форме. Игра должна содержать различные уровни сложности.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Определить темы математики для включения в игру.</li>
+                                <li>Выбрать игровой движок (Unity/Godot).</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Приложение для управления личными финансами</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Создать приложение для учёта доходов и расходов с визуализацией данных в виде графиков и диаграмм. Добавить возможность установки финансовых целей.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы финансовой грамотности.</li>
+                                <li>Спроектировать интерфейс и функционал приложения.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Анализ текстов с помощью ИИ</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Создать программу, которая анализирует тексты на предмет тональности, сложности, ключевых слов. Можно использовать для проверки сочинений.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы обработки естественного языка.</li>
+                                <li>Подобрать библиотеки для анализа текста.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Виртуальная лаборатория по физике</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать программу для моделирования физических экспериментов (механика, оптика, электричество). Пользователи могут изменять параметры и наблюдать результаты.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы физического моделирования.</li>
+                                <li>Выбрать физический движок или библиотеку для моделирования.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Мобильное приложение для изучения английского</h3>
+                        <span class="idea-category">Программирование</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Создать интерактивное мобильное приложение для изучения английского языка с играми, тестами и системой прогресса. Можно добавить распознавание речи для проверки произношения.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы разработки мобильных приложений (Flutter/React Native).</li>
+                                <li>Составить план уроков и структуру приложения.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-generator" id="programmingGenerator">
+                <div class="generator-container">
+                    <h2 class="generator-title">Генератор идей по программированию</h2>
+                    <p>Нажмите на кнопку, чтобы получить случайную идею для проекта по программированию!</p>
+                    
+                    <div class="generator-result" id="programmingGeneratorResult">
+                        <div class="generated-idea-title" id="programmingIdeaTitle">Ваша идея появится здесь</div>
+                        <div class="generated-idea-description" id="programmingIdeaDescription">Описание проекта появится здесь после нажатия кнопки</div>
+                    </div>
+                    
+                    <button class="generator-btn" id="programmingGenerateBtn">Сгенерировать идею</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Русский язык и литература -->
+    <section class="category-page" id="literaturePage">
+        <div class="container">
+            <div class="page-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <h1 class="page-title">Русский язык и литература</h1>
+                <p class="page-description">Идеи проектов по русскому языку, литературе, анализу текстов и творческим работам.</p>
+            </div>
+            
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Трансформация сказочных сюжетов в современной литературе</h3>
+                        <span class="idea-category">Литература</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Проанализировать, как классические сказочные сюжеты переосмысливаются в современной литературе и кинематографе. Выявить новые мотивы и значения.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать несколько классических сказок для анализа.</li>
+                                <li>Найти их современные интерпретации.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Феномен фанфиков как литературного явления</h3>
+                        <span class="idea-category">Литература</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать фанфикшен как современный литературный жанр: его особенности, жанры, влияние на культуру и отношение к каноническим произведениям.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить популярные платформы для фанфиков.</li>
+                                <li>Проанализировать наиболее популярные фанфики по известным произведениям.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание литературного подкаста</h3>
+                        <span class="idea-category">Творческий проект</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Записать серию подкастов о литературе: обзоры книг, интервью с читателями, анализ произведений. Разработать концепцию и регулярный выпуск.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Определить тематику и целевую аудиторию подкаста.</li>
+                                <li>Подготовить оборудование для записи и монтажа.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Анализ рекламных текстов с точки зрения лингвистики</h3>
+                        <span class="idea-category">Русский язык</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать языковые приёмы, используемые в современной рекламе. Проанализировать, как язык влияет на эффективность рекламных сообщений.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Собрать коллекцию рекламных текстов разных жанров.</li>
+                                <li>Изучить основные лингвистические приёмы в рекламе.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Сравнение образов героев в русской и зарубежной литературе</h3>
+                        <span class="idea-category">Литература</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Проанализировать и сравнить образы похожих героев в русской и зарубежной литературе (например, "лишние люди" в русской литературе и романтические герои в европейской).</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать тип героев для сравнения.</li>
+                                <li>Подобрать произведения для анализа.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание сборника современных сказок</h3>
+                        <span class="idea-category">Творческий проект</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Написать сборник сказок на современные темы (экология, технологии, дружба народов) с иллюстрациями. Проанализировать, как изменились сказочные сюжеты со временем.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить структуру традиционных сказок.</li>
+                                <li>Определить темы для современных сказок.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Литературный анализ современной поэзии</h3>
+                        <span class="idea-category">Литература</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Изучить особенности современной русской поэзии: темы, образы, стилистические приёмы. Сравнить с поэзией предыдущих эпох.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Подобрать произведения современных поэтов.</li>
+                                <li>Изучить методы литературного анализа.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Исследование эволюции женских образов в литературе</h3>
+                        <span class="idea-category">Литература</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Проследить, как менялись женские образы в русской литературе от классицизма до современности. Выявить социальные и культурные причины этих изменений.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать произведения разных литературных эпох.</li>
+                                <li>Определить критерии для анализа женских образов.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-generator" id="literatureGenerator">
+                <div class="generator-container">
+                    <h2 class="generator-title">Генератор идей по литературе</h2>
+                    <p>Нажмите на кнопку, чтобы получить случайную идею для проекта по литературе!</p>
+                    
+                    <div class="generator-result" id="literatureGeneratorResult">
+                        <div class="generated-idea-title" id="literatureIdeaTitle">Ваша идея появится здесь</div>
+                        <div class="generated-idea-description" id="literatureIdeaDescription">Описание проекта появится здесь после нажатия кнопки</div>
+                    </div>
+                    
+                    <button class="generator-btn" id="literatureGenerateBtn">Сгенерировать идею</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- История и обществознание -->
+    <section class="category-page" id="historyPage">
+        <div class="container">
+            <div class="page-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <h1 class="page-title">История и обществознание</h1>
+                <p class="page-description">Проекты по истории, обществознанию, социологическим исследованиям и правоведению.</p>
+            </div>
+            
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Сравнение систем образования в разных странах</h3>
+                        <span class="idea-category">Обществознание</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать и сравнить системы школьного образования в разных странах мира. Проанализировать их сильные и слабые стороны, возможности адаптации лучших практик.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать 3-4 страны для сравнения.</li>
+                                <li>Собрать информацию об их образовательных системах.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">История детского движения в России</h3>
+                        <span class="idea-category">История</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Изучить развитие детских и молодежных организаций в России от царских времен до наших дней. Проанализировать их цели, деятельность и влияние на общество.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Составить хронологию детских движений.</li>
+                                <li>Найти архивные материалы и воспоминания участников.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Анализ городских легенд и их исторической основы</h3>
+                        <span class="idea-category">История</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать популярные городские легенды вашего города или региона, выявить их исторические корни и проанализировать, как они отражают местную историю и культуру.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Собрать коллекцию городских легенд.</li>
+                                <li>Изучить исторические источники по соответствующим периодам.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Социологический опрос о патриотизме среди молодежи</h3>
+                        <span class="idea-category">Обществознание</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Провести опрос среди школьников и студентов о их понимании патриотизма. Проанализировать результаты и сравнить с данными подобных опросов прошлых лет.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Разработать анкету для опроса.</li>
+                                <li>Получить разрешение на проведение исследования.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание виртуального музея истории школы</h3>
+                        <span class="idea-category">История</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Собрать материалы по истории школы: фотографии, документы, воспоминания выпускников. Создать виртуальный музей с интерактивной экскурсией.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Собрать архивные материалы о школе.</li>
+                                <li>Изучить инструменты для создания виртуальных музеев.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Исследование истории своей семьи</h3>
+                        <span class="idea-category">История</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Проследить историю своей семьи на протяжении нескольких поколений, связав её с ключевыми событиями в истории страны.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Провести интервью с родственниками.</li>
+                                <li>Изучить семейные документы и фотографии.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Реконструкция исторического костюма</h3>
+                        <span class="idea-category">История</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Изучить исторический костюм определённой эпохи и создать его точную копию или адаптированный вариант.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать исторический период для реконструкции.</li>
+                                <li>Изучить источники по историческому костюму.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Анализ пропаганды в СМИ разных эпох</h3>
+                        <span class="idea-category">История</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Сравнить методы пропаганды в СМИ советского периода и современности, выявить общие приёмы и различия.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Подобрать материалы СМИ разных периодов.</li>
+                                <li>Изучить методы анализа пропагандистских текстов.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-generator" id="historyGenerator">
+                <div class="generator-container">
+                    <h2 class="generator-title">Генератор идей по истории</h2>
+                    <p>Нажмите на кнопку, чтобы получить случайную идею для проекта по истории!</p>
+                    
+                    <div class="generator-result" id="historyGeneratorResult">
+                        <div class="generated-idea-title" id="historyIdeaTitle">Ваша идея появится здесь</div>
+                        <div class="generated-idea-description" id="historyIdeaDescription">Описание проекта появится здесь после нажатия кнопки</div>
+                    </div>
+                    
+                    <button class="generator-btn" id="historyGenerateBtn">Сгенерировать идею</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Биология и химия -->
+    <section class="category-page" id="biologyPage">
+        <div class="container">
+            <div class="page-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <h1 class="page-title">Биология и химия</h1>
+                <p class="page-description">Проекты по биологии, химии, экологии, исследованиям и экспериментам.</p>
+            </div>
+            
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Сравнение натуральных и синтетических витаминов</h3>
+                        <span class="idea-category">Химия</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Провести сравнительный анализ натуральных витаминов из продуктов питания и синтетических из аптечных препаратов. Исследовать их химический состав и биодоступность.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить методы анализа витаминов.</li>
+                                <li>Подготовить образцы натуральных и синтетических витаминов.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Исследование биоритмов и их влияние на успеваемость</h3>
+                        <span class="idea-category">Биология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Изучить суточные биоритмы школьников и их влияние на когнитивные функции и успеваемость. Разработать рекомендации по оптимальному расписанию занятий.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Провести опрос среди учеников об их режиме дня.</li>
+                                <li>Изучить литературу по хронобиологии.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание определителя растений по фотографии</h3>
+                        <span class="idea-category">Биология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать мобильное приложение или веб-сервис, который по фотографии определяет вид растения и предоставляет информацию о нём.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Собрать базу фотографий растений вашего региона.</li>
+                                <li>Изучить основы машинного обучения для распознавания изображений.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Исследование химического состава разных видов чая</h3>
+                        <span class="idea-category">Химия</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Провести химический анализ популярных видов чая, определить содержание кофеина, антиоксидантов и других веществ. Сравнить результаты и дать рекомендации по выбору чая.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить методики химического анализа растительных материалов.</li>
+                                <li>Подготовить необходимые реактивы и оборудование.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Влияние комнатных растений на микроклимат</h3>
+                        <span class="idea-category">Биология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать влияние разных видов комнатных растений на влажность, температуру и состав воздуха в помещении. Создать рекомендации по озеленению школьных кабинетов.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Подобрать 5-7 видов популярных комнатных растений.</li>
+                                <li>Подготовить оборудование для измерения параметров микроклимата.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Влияние разных удобрений на рост растений</h3>
+                        <span class="idea-category">Биология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Провести эксперимент по выращиванию растений с использованием разных видов удобрений и сравнить результаты.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать растения для эксперимента.</li>
+                                <li>Подобрать различные виды удобрений.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Исследование микроорганизмов в разных средах</h3>
+                        <span class="idea-category">Биология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Собрать образцы из разных мест и исследовать под микроскопом разнообразие микроорганизмов.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Подготовить питательные среды для микроорганизмов.</li>
+                                <li>Собрать образцы из разных мест.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Изучение влияния музыки на рост растений</h3>
+                        <span class="idea-category">Биология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Провести эксперимент по выращиванию растений под разную музыку и проанализировать влияние звуков на развитие.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Подобрать растения для эксперимента.</li>
+                                <li>Выбрать музыкальные произведения разных жанров.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-generator" id="biologyGenerator">
+                <div class="generator-container">
+                    <h2 class="generator-title">Генератор идей по биологии</h2>
+                    <p>Нажмите на кнопку, чтобы получить случайную идею для проекта по биологии!</p>
+                    
+                    <div class="generator-result" id="biologyGeneratorResult">
+                        <div class="generated-idea-title" id="biologyIdeaTitle">Ваша идея появится здесь</div>
+                        <div class="generated-idea-description" id="biologyIdeaDescription">Описание проекта появится здесь после нажатия кнопки</div>
+                    </div>
+                    
+                    <button class="generator-btn" id="biologyGenerateBtn">Сгенерировать идею</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Математика и физика -->
+    <section class="category-page" id="mathPage">
+        <div class="container">
+            <div class="page-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <h1 class="page-title">Математика и физика</h1>
+                <p class="page-description">Проекты по математике, физике, исследованию закономерностей и решению практических задач.</p>
+            </div>
+            
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Математика оригами: анализ геометрических преобразований</h3>
+                        <span class="idea-category">Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать математические принципы, лежащие в основе искусства оригами. Проанализировать геометрические преобразования при складывании бумаги.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить базовые техники оригами.</li>
+                                <li>Проанализировать геометрию складок и углов.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Оптимизация маршрутов общественного транспорта</h3>
+                        <span class="idea-category">Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать математическую модель для оптимизации маршрутов общественного транспорта в вашем городе, учитывая пассажиропоток и временные интервалы.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Собрать данные о маршрутах и расписании транспорта.</li>
+                                <li>Изучить методы оптимизации и теории графов.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание генератора фрактальных изображений</h3>
+                        <span class="idea-category">Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать программу для генерации фрактальных изображений (Мандельброта, Жюлиа и др.) с возможностью настройки параметров и цветовых схем.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить математические основы фракталов.</li>
+                                <li>Освоить программирование графики.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Математическое моделирование эпидемий</h3>
+                        <span class="idea-category">Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать математическую модель распространения инфекционных заболеваний на основе SIR-модели. Проанализировать влияние карантинных мер на динамику эпидемии.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы математического моделирования и SIR-модель.</li>
+                                <li>Научиться работать с программой для моделирования (Python/Excel).</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание модели солнечной системы с Arduino</h3>
+                        <span class="idea-category">Физика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать физическую модель солнечной системы с использованием Arduino для управления движением планет и светодиодной подсветкой. Можно добавить голосовое сопровождение.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы работы с Arduino.</li>
+                                <li>Рассчитать масштабы и траектории движения планет.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Геометрические закономерности в архитектуре</h3>
+                        <span class="idea-category">Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Проанализировать геометрические формы и закономерности в архитектуре зданий родного города.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Собрать фотографии архитектурных объектов.</li>
+                                <li>Изучить геометрические принципы в архитектуре.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Анализ случайности в лотереях</h3>
+                        <span class="idea-category">Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать математические аспекты различных лотерей, рассчитать вероятности выигрыша и ожидаемую доходность.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить правила различных лотерей.</li>
+                                <li>Разработать математическую модель для анализа.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание криптографической системы</h3>
+                        <span class="idea-category">Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать простую систему шифрования на основе математических принципов и проанализировать её стойкость.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы криптографии.</li>
+                                <li>Разработать алгоритм шифрования.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-generator" id="mathGenerator">
+                <div class="generator-container">
+                    <h2 class="generator-title">Генератор идей по математике</h2>
+                    <p>Нажмите на кнопку, чтобы получить случайную идею для проекта по математике!</p>
+                    
+                    <div class="generator-result" id="mathGeneratorResult">
+                        <div class="generated-idea-title" id="mathIdeaTitle">Ваша идея появится здесь</div>
+                        <div class="generated-idea-description" id="mathIdeaDescription">Описание проекта появится здесь после нажатия кнопки</div>
+                    </div>
+                    
+                    <button class="generator-btn" id="mathGenerateBtn">Сгенерировать идею</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОБЖ и физкультура -->
+    <section class="category-page" id="sportsPage">
+        <div class="container">
+            <div class="page-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <h1 class="page-title">ОБЖ и физкультура</h1>
+                <p class="page-description">Проекты по безопасности жизнедеятельности, здоровому образу жизни, спорту и физической культуре.</p>
+            </div>
+            
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Влияние гаджетов на осанку школьников</h3>
+                        <span class="idea-category">ОБЖ</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать, как использование смартфонов, планшетов и компьютеров влияет на осанку школьников. Разработать комплекс упражнений для профилактики нарушений.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Провести обследование осанки у школьников.</li>
+                                <li>Изучить эргономику рабочего места с гаджетами.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Профилактика профессиональных заболеваний офисных работников</h3>
+                        <span class="idea-category">ОБЖ</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Изучить наиболее распространенные профессиональные заболевания, связанные с сидячей работой, и разработать программу их профилактики для школьников и взрослых.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить статистику профессиональных заболеваний.</li>
+                                <li>Разработать анкету для выявления факторов риска.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание мобильного приложения для экстренных вызовов</h3>
+                        <span class="idea-category">ОБЖ</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать приложение с быстрым доступом к экстренным службам, функцией отправки геолокации и медицинской информацией о пользователе для чрезвычайных ситуаций.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить требования к приложениям экстренной помощи.</li>
+                                <li>Спроектировать интерфейс для быстрого доступа к функциям.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Влияние разных видов разминки на спортивные результаты</h3>
+                        <span class="idea-category">Физкультура</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Сравнить эффективность различных методик разминки перед физическими нагрузками. Провести эксперимент с одноклассниками, измеряя результаты в разных дисциплинах.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить научные работы о влиянии разминки на организм.</li>
+                                <li>Разработать протокол эксперимента.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Создание интерактивной карты безопасных маршрутов до школы</h3>
+                        <span class="idea-category">ОБЖ</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать карту безопасных маршрутов от дома до школы для учеников. Отметить опасные участки, светофоры, пешеходные переходы. Создать буклет с правилами дорожного движения.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Провести обследование маршрутов вокруг школы.</li>
+                                <li>Изучить статистику ДТП в районе школы.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Комплекс упражнений для улучшения осанки</h3>
+                        <span class="idea-category">Физкультура</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать и апробировать комплекс упражнений для коррекции осанки у школьников.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить анатомию и физиологию позвоночника.</li>
+                                <li>Разработать комплекс упражнений.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Влияние занятий спортом на успеваемость</h3>
+                        <span class="idea-category">Физкультура</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Провести сравнительный анализ успеваемости школьников, активно занимающихся спортом, и тех, кто не занимается.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Разработать анкету для опроса.</li>
+                                <li>Собрать данные об успеваемости и спортивной активности.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Исследование питания спортсменов</h3>
+                        <span class="idea-category">Физкультура</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Проанализировать особенности питания спортсменов разных видов спорта, разработать рекомендации по спортивному питанию.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы спортивного питания.</li>
+                                <li>Провести опрос спортсменов о их питании.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-generator" id="sportsGenerator">
+                <div class="generator-container">
+                    <h2 class="generator-title">Генератор идей по ОБЖ и физкультуре</h2>
+                    <p>Нажмите на кнопку, чтобы получить случайную идею для проекта по ОБЖ и физкультуре!</p>
+                    
+                    <div class="generator-result" id="sportsGeneratorResult">
+                        <div class="generated-idea-title" id="sportsIdeaTitle">Ваша идея появится здесь</div>
+                        <div class="generated-idea-description" id="sportsIdeaDescription">Описание проекта появится здесь после нажатия кнопки</div>
+                    </div>
+                    
+                    <button class="generator-btn" id="sportsGenerateBtn">Сгенерировать идею</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Межпредметные проекты -->
+    <section class="category-page" id="mixedPage">
+        <div class="container">
+            <div class="page-header">
+                <button class="back-btn"><i class="fas fa-arrow-left"></i> Назад</button>
+                <h1 class="page-title">Межпредметные проекты</h1>
+                <p class="page-description">Проекты на стыке разных дисциплин, интеграция знаний из различных областей.</p>
+            </div>
+            
+            <div class="ideas-grid">
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Программирование и музыка: создание генератора мелодий</h3>
+                        <span class="idea-category">Информатика + Музыка</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать программу, которая генерирует мелодии на основе музыкальных правил и алгоритмов. Проанализировать гармонию и ритмические паттерны.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить основы музыкальной теории.</li>
+                                <li>Разработать алгоритм генерации мелодий.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Экономика и экология: анализ стоимости "зелёных" технологий</h3>
+                        <span class="idea-category">Экономика + Экология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать экономическую эффективность экологически чистых технологий в сравнении с традиционными. Рассчитать сроки окупаемости и долгосрочную выгоду.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Собрать данные о стоимости разных технологий.</li>
+                                <li>Изучить методы экономического анализа.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Литература и биология: анализ медицинских тем в произведениях</h3>
+                        <span class="idea-category">Литература + Биология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Проанализировать, как описываются болезни, лечение и медицинские практики в литературных произведениях разных эпох с точки зрения современной медицины.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать произведения с медицинской тематикой.</li>
+                                <li>Изучить историю медицины соответствующих периодов.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Магия чисел в классических произведениях</h3>
+                        <span class="idea-category">Литература + Математика</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать числовые закономерности в произведениях русской классики (частотность использования чисел, символика чисел, золотое сечение в композиции).</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Выбрать 3-4 произведения для анализа.</li>
+                                <li>Разработать методику подсчета и анализа числовых данных.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Экологический дизайн школьной территории</h3>
+                        <span class="idea-category">Биология + Искусство</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Разработать проект озеленения и благоустройства школьной территории с учетом экологических принципов. Создать макет и провести расчеты необходимых ресурсов.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Провести обследование школьной территории.</li>
+                                <li>Изучить принципы ландшафтного дизайна и экологии.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Историческая кулинария: воссоздание блюд прошлых эпох</h3>
+                        <span class="idea-category">История + Химия</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать исторические рецепты разных эпох, воссоздать несколько блюд, провести их химический анализ.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить исторические кулинарные источники.</li>
+                                <li>Подобрать рецепты для воссоздания.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Химия в искусстве: анализ красок</h3>
+                        <span class="idea-category">Химия + Искусство</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать химический состав красок разных эпох, проанализировать, как химия влияет на сохранность произведений искусства.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить историю художественных материалов.</li>
+                                <li>Разработать методику химического анализа красок.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="idea-card">
+                    <div class="idea-header">
+                        <h3 class="idea-title">Биология и психология: влияние цвета на эмоции</h3>
+                        <span class="idea-category">Биология + Психология</span>
+                    </div>
+                    <div class="idea-body">
+                        <p class="idea-description">Исследовать, как разные цвета влияют на психофизиологическое состояние человека, провести эксперименты.</p>
+                        <div class="idea-steps">
+                            <h4>Первые шаги:</h4>
+                            <ol>
+                                <li>Изучить теорию цвета и его восприятия.</li>
+                                <li>Разработать методику эксперимента.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category-generator" id="mixedGenerator">
+                <div class="generator-container">
+                    <h2 class="generator-title">Генератор смешанных идей</h2>
+                    <p>Нажмите на кнопку, чтобы получить случайную смешанную идею для проекта!</p>
+                    
+                    <div class="generator-result" id="mixedGeneratorResult">
+                        <div class="generated-idea-title" id="mixedIdeaTitle">Ваша идея появится здесь</div>
+                        <div class="generated-idea-description" id="mixedIdeaDescription">Описание проекта появится здесь после нажатия кнопки</div>
+                    </div>
+                    
+                    <button class="generator-btn" id="mixedGenerateBtn">Сгенерировать идею</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Проектные идеи</h3>
+                    <p>Платформа для поиска идей для школьных проектов учеников 10 класса. Найдите вдохновение для своего проекта!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Категории</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="category-link" data-category="programming">Программирование</a></li>
+                        <li><a href="#" class="category-link" data-category="literature">Русский язык / Литература</a></li>
+                        <li><a href="#" class="category-link" data-category="history">История / Обществознание</a></li>
+                        <li><a href="#" class="category-link" data-category="biology">Биология / Химия</a></li>
+                        <li><a href="#" class="category-link" data-category="math">Математика / Физика</a></li>
+                        <li><a href="#" class="category-link" data-category="sports">ОБЖ / Физкультура</a></li>
+                        <li><a href="#" class="category-link" data-category="mixed">Смешанные проекты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Есть вопросы или предложения? Напишите нам!</p>
+                    <p>Email: project.ten2026@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Проектные идеи для 10 класса. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Обновлённая база данных идей для генераторов по категориям (уникальные идеи)
+        const programmingIdeas = [
+            {
+                title: "Разработка игры для изучения основ программирования",
+                description: "Создать игру, которая в интерактивной форме учит основам программирования (переменные, условия, циклы). Игра должна быть рассчитана на школьников без опыта в программировании."
+            },
+            {
+                title: "Создание сайта-портфолио для школьников",
+                description: "Разработать шаблон сайта-портфолио, который могут использовать ученики для демонстрации своих достижений, проектов и увлечений."
+            },
+            {
+                title: "Программа для анализа успеваемости класса",
+                description: "Создать программу, которая анализирует успеваемость класса по разным предметам, строит графики и выявляет закономерности."
+            },
+            {
+                title: "Мобильное приложение для подготовки к экзаменам",
+                description: "Разработать приложение с карточками для запоминания информации, тестами и таймером для подготовки к ОГЭ и ЕГЭ."
+            },
+            {
+                title: "Веб-приложение для совместной работы над проектами",
+                description: "Создать платформу, где ученики могут совместно работать над школьными проектами, обмениваться файлами и обсуждать идеи."
+            },
+            {
+                title: "Игра-симулятор экономики",
+                description: "Разработать игру, которая моделирует экономические процессы: производство, торговля, инвестиции. Игроки управляют своей компанией."
+            },
+            {
+                title: "Приложение для изучения иностранных языков",
+                description: "Создать интерактивное приложение с упражнениями, аудиоматериалами и системой отслеживания прогресса в изучении языков."
+            },
+            {
+                title: "Система автоматического составления тестов",
+                description: "Разработать программу, которая генерирует тесты по заданной теме на основе базы вопросов. Добавить возможность настройки сложности."
+            },
+            {
+                title: "Платформа для онлайн-викторин",
+                description: "Создать сайт, где можно проводить викторины по разным предметам в реальном времени с системой подсчёта очков."
+            },
+            {
+                title: "Приложение для управления школьными задачами",
+                description: "Разработать приложение для планирования школьных заданий с напоминаниями, приоритетами и отслеживанием выполнения."
+            },
+            {
+                title: "Генератор математических задач",
+                description: "Создать программу, которая генерирует уникальные математические задачи с решениями для разных классов и тем."
+            },
+            {
+                title: "Виртуальный музей информационных технологий",
+                description: "Разработать интерактивный веб-сайт, рассказывающий об истории развития вычислительной техники и программирования."
+            }
+        ];
+        
+        const literatureIdeas = [
+            {
+                title: "Анализ эволюции женских образов в русской литературе",
+                description: "Проследить, как менялись женские образы в русской литературе от классицизма до современности. Выявить социальные и культурные причины этих изменений."
+            },
+            {
+                title: "Создание словаря устаревших слов из произведений школьной программы",
+                description: "Составить иллюстрированный словарь устаревших слов, которые встречаются в произведениях школьной программы, с объяснениями и примерами употребления."
+            },
+            {
+                title: "Исследование влияния социальных сетей на письменную речь подростков",
+                description: "Проанализировать, как общение в социальных сетях влияет на письменную речь школьников: использование сленга, сокращений, эмодзи и т.д."
+            },
+            {
+                title: "Сравнительный анализ переводов одного произведения",
+                description: "Взять известное зарубежное произведение и сравнить несколько его переводов на русский язык, выявив различия в стиле и трактовке."
+            },
+            {
+                title: "Исследование языковых особенностей регионов России",
+                description: "Собрать и проанализировать диалектные слова и выражения разных регионов России, создать карту языковых особенностей."
+            },
+            {
+                title: "Анализ речевых характеристик героев в драматургии",
+                description: "Изучить, как через речь персонажей в пьесах раскрываются их характеры, социальное положение и взаимоотношения."
+            },
+            {
+                title: "Создание путеводителя по литературным местам города",
+                description: "Разработать маршрут по местам, связанным с жизнью и творчеством писателей и поэтов в вашем городе, с описанием и историческими справками."
+            },
+            {
+                title: "Исследование образов природы в поэзии Серебряного века",
+                description: "Проанализировать, как разные поэты Серебряного века изображали природу, выявить общие мотивы и индивидуальные особенности."
+            },
+            {
+                title: "Создание аудиосборника стихотворений в собственном исполнении",
+                description: "Записать аудиоверсии классических и современных стихотворений, сопровождая их музыкальным оформлением и комментариями."
+            },
+            {
+                title: "Анализ языковых средств создания юмора в произведениях",
+                description: "Исследовать, какие языковые приёмы используются для создания комического эффекта в литературных произведениях разных жанров."
+            },
+            {
+                title: "Сравнение языка классической и современной прозы",
+                description: "Проанализировать различия в лексике, синтаксисе и стиле между классической русской прозой XIX века и современной литературой."
+            },
+            {
+                title: "Исследование влияния зарубежной литературы на русских писателей",
+                description: "Проследить, как творчество зарубежных авторов повлияло на становление и развитие отдельных русских писателей или литературных направлений."
+            }
+        ];
+        
+        const historyIdeas = [
+            {title: "Виртуальный музей истории школы", description: "Создать цифровой музей с историей школы, фотографиями разных лет, воспоминаниями выпускников и учителей."},
+            {title: "Исследование истории своей семьи", description: "Проследить историю своей семьи на протяжении нескольких поколений, связав её с ключевыми событиями в истории страны."},
+            {title: "Анализ пропаганды в СМИ разных эпох", description: "Сравнить методы пропаганды в СМИ советского периода и современности, выявить общие приёмы и различия."},
+            {title: "Реконструкция исторического костюма", description: "Изучить исторический костюм определённой эпохи и создать его точную копию или адаптированный вариант."},
+            {title: "Карта исторических мест города", description: "Создать интерактивную карту с отметками исторически значимых мест города и их описанием."},
+            {title: "Сравнение образования в разные исторические периоды", description: "Проанализировать, как менялась система образования в России на протяжении XIX-XXI веков."},
+            {title: "Исследование быта разных социальных слоёв", description: "Изучить особенности повседневной жизни разных социальных групп в определённый исторический период."},
+            {title: "Анализ политических карикатур", description: "Исследовать политические карикатуры разных эпох как исторический источник и средство пропаганды."},
+            {title: "Создание хроники важных событий района", description: "Составить подробную хронику наиболее значимых событий в истории вашего района за последние 100 лет."},
+            {title: "Исследование эволюции денежной системы", description: "Проследить изменения в денежной системе России от древности до современности, создать коллекцию изображений денег."},
+            {title: "Анализ изменения границ государства", description: "Изучить, как менялись границы России на протяжении истории, и причины этих изменений."},
+            {title: "Исследование роли личности в истории", description: "Проанализировать влияние конкретной исторической личности на ход событий в определённый период."}
+        ];
+        
+        const biologyIdeas = [
+            {title: "Исследование биоразнообразия школьного двора", description: "Провести инвентаризацию растений и животных на территории школьного двора, создать карту биоразнообразия."},
+            {title: "Сравнение эффективности моющих средств", description: "Провести эксперименты по сравнению эффективности и экологической безопасности разных моющих средств."},
+            {title: "Влияние разных удобрений на рост растений", description: "Провести эксперимент по выращиванию растений с использованием разных видов удобрений и сравнить результаты."},
+            {title: "Исследование микроорганизмов в разных средах", description: "Собрать образцы из разных мест и исследовать под микроскопом разнообразие микроорганизмов."},
+            {title: "Анализ качества воды из разных источников", description: "Провести химический анализ воды из разных источников (водопровод, родник, река) и сравнить результаты."},
+            {title: "Изучение влияния музыки на рост растений", description: "Провести эксперимент по выращиванию растений под разную музыку и проанализировать влияние звуков на развитие."},
+            {title: "Создание гербария местных растений", description: "Собрать, засушить и классифицировать растения вашего региона, создать подробный гербарий с описаниями."},
+            {title: "Исследование пищевых добавок в продуктах", description: "Проанализировать состав популярных продуктов питания, выявить пищевые добавки и оценить их потенциальное влияние на здоровье."},
+            {title: "Сравнение состава разных видов мёда", description: "Провести химический анализ разных видов мёда, определить содержание полезных веществ и примесей."},
+            {title: "Изучение влияния света на развитие растений", description: "Провести эксперимент по выращиванию растений при разном освещении (естественном, искусственном, разного спектра)."},
+            {title: "Анализ загрязнения воздуха методом лихеноиндикации", description: "Использовать лишайники как индикаторы чистоты воздуха в разных районах города."},
+            {title: "Исследование суточной активности животных", description: "Понаблюдать за суточной активностью домашних или диких животных, выявить закономерности в их поведении."}
+        ];
+        
+        const mathIdeas = [
+            {title: "Математический анализ настольных игр", description: "Исследовать математические закономерности в популярных настольных играх (вероятности, стратегии, комбинаторика)."},
+            {title: "Геометрические закономерности в архитектуре", description: "Проанализировать геометрические формы и закономерности в архитектуре зданий родного города."},
+            {title: "Статистический анализ успеваемости", description: "Провести статистический анализ успеваемости учеников школы по разным предметам, выявить корреляции и закономерности."},
+            {title: "Математическое моделирование эпидемий", description: "Разработать математическую модель распространения инфекционных заболеваний и проанализировать влияние разных факторов."},
+            {title: "Исследование золотого сечения в природе и искусстве", description: "Найти примеры золотого сечения в природе, архитектуре, живописи и проанализировать их математически."},
+            {title: "Анализ случайности в лотереях", description: "Исследовать математические аспекты различных лотерей, рассчитать вероятности выигрыша и ожидаемую доходность."},
+            {title: "Создание криптографической системы", description: "Разработать простую систему шифрования на основе математических принципов и проанализировать её стойкость."},
+            {title: "Исследование фракталов в природе", description: "Найти примеры фрактальных структур в природе (деревья, снежинки, облака) и смоделировать их математически."},
+            {title: "Анализ эффективности разных методов решения задач", description: "Сравнить различные методы решения математических задач по скорости, сложности и эффективности."},
+            {title: "Создание математической модели транспортных потоков", description: "Разработать модель транспортных потоков в районе школы и предложить оптимизацию движения."},
+            {title: "Исследование числовых закономерностей в литературе", description: "Проанализировать частотность использования чисел в литературных произведениях, выявить закономерности."},
+            {title: "Математика в музыке: анализ гармонии", description: "Исследовать математические основы музыкальной гармонии, интервалов и аккордов."}
+        ];
+        
+        const sportsIdeas = [
+            {title: "Комплекс упражнений для улучшения осанки", description: "Разработать и апробировать комплекс упражнений для коррекции осанки у школьников."},
+            {title: "Интерактивное пособие по первой помощи", description: "Создать интерактивное пособие по оказанию первой помощи с использованием технологий дополненной реальности."},
+            {title: "Влияние занятий спортом на успеваемость", description: "Провести сравнительный анализ успеваемости школьников, активно занимающихся спортом, и тех, кто не занимается."},
+            {title: "Разработка программы утренней зарядки", description: "Создать комплекс утренней зарядки для школьников с учётом возрастных особенностей и современных рекомендаций."},
+            {title: "Исследование питания спортсменов", description: "Проанализировать особенности питания спортсменов разных видов спорта, разработать рекомендации по спортивному питанию."},
+            {title: "Карта безопасных маршрутов до школы", description: "Разработать карту безопасных маршрутов от дома до школы для учеников с отметкой опасных участков."},
+            {title: "Сравнение эффективности разных видов разминки", description: "Провести исследование влияния разных видов разминки на спортивные результаты и предотвращение травм."},
+            {title: "Создание фитнес-приложения для школьников", description: "Разработать мобильное приложение с индивидуальными программами тренировок и отслеживанием прогресса."},
+            {title: "Исследование влияния стресса на организм", description: "Изучить физиологические и психологические последствия стресса и разработать методы борьбы с ним."},
+            {title: "Анализ травматизма на уроках физкультуры", description: "Исследовать причины и частоту травм на уроках физкультуры, разработать рекомендации по их профилактике."},
+            {title: "Создание настольной игры по ЗОЖ", description: "Разработать образовательную настольную игру, которая в игровой форме учит принципам здорового образа жизни."},
+            {title: "Исследование режима дня школьников", description: "Проанализировать режим дня современных школьников и его влияние на здоровье и успеваемость."}
+        ];
+        
+        const mixedIdeas = [
+            {title: "Математика в музыке: анализ гармонии и ритма", description: "Исследовать математические закономерности в музыке: частоты нот, ритмические паттерны, гармонические последовательности."},
+            {title: "Экологический дизайн школьной территории", description: "Разработать проект озеленения и благоустройства школьной территории с учётом экологических принципов."},
+            {title: "Историческая кулинария: воссоздание блюд прошлых эпох", description: "Исследовать исторические рецепты разных эпох, воссоздать несколько блюд, провести их химический анализ."},
+            {title: "Физика в спорте: анализ движений", description: "Использовать законы физики для анализа спортивных движений и техник, разработать рекомендации по их оптимизации."},
+            {title: "Химия в искусстве: анализ красок", description: "Исследовать химический состав красок разных эпох, проанализировать, как химия влияет на сохранность произведений искусства."},
+            {title: "География и литература: образы мест в произведениях", description: "Проанализировать, как географические особенности местности отражаются в литературных произведениях."},
+            {title: "Биология и психология: влияние цвета на эмоции", description: "Исследовать, как разные цвета влияют на психофизиологическое состояние человека, провести эксперименты."},
+            {title: "История и информатика: создание исторической игры", description: "Разработать компьютерную игру на историческую тему, совмещающую историческую достоверность и игровой процесс."},
+            {title: "Физика и музыка: создание музыкального инструмента", description: "Используя знания физики о звуке, создать простой музыкальный инструмент и исследовать его акустические свойства."},
+            {title: "Математика и биология: моделирование популяций", description: "Разработать математическую модель изменения численности популяции животных с учётом различных факторов."},
+            {title: "Химия и кулинария: молекулярная кухня", description: "Исследовать основы молекулярной кухни, провести эксперименты по созданию блюд с необычной текстурой и формой."},
+            {title: "Литература и психология: анализ характеров героев", description: "Использовать психологические теории для анализа характеров литературных героев и их мотивации."}
+        ];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const mainPage = document.getElementById('mainPage');
+            const categoryPages = document.querySelectorAll('.category-page');
+            const categoryButtons = document.querySelectorAll('.category-btn');
+            const backButtons = document.querySelectorAll('.back-btn');
+            const navLinks = document.querySelectorAll('nav a');
+            const categoryLinks = document.querySelectorAll('.category-link');
+            
+            // Функция для показа главной страницы
+            function showMainPage() {
+                mainPage.style.display = 'block';
+                categoryPages.forEach(page => {
+                    page.style.display = 'none';
+                });
+                
+                // Обновляем навигацию
+                navLinks.forEach(link => {
+                    if (link.id === 'homeLink') {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Функция для показа страницы категории
+            function showCategoryPage(category) {
+                mainPage.style.display = 'none';
+                categoryPages.forEach(page => {
+                    page.style.display = 'none';
+                });
+                
+                const categoryPage = document.getElementById(category + 'Page');
+                if (categoryPage) {
+                    categoryPage.style.display = 'block';
+                    // Прокручиваем к началу страницы
+                    window.scrollTo(0, 0);
+                }
+                
+                // Обновляем навигацию
+                navLinks.forEach(link => {
+                    if (link.id === 'categoriesLink') {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                // Генерируем случайную идею для категории при открытии
+                generateCategoryIdea(category);
+            }
+            
+            // Обработчики для кнопок категорий на главной странице
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    showCategoryPage(category);
+                });
+            });
+            
+            // Обработчики для ссылок в футере - исправленная версия
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const category = this.getAttribute('data-category');
+                    showCategoryPage(category);
+                });
+            });
+            
+            // Обработчики для кнопок "Назад"
+            backButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showMainPage();
+                });
+            });
+            
+            // Обработчики для навигации
+            document.getElementById('homeLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                showMainPage();
+            });
+            
+            document.getElementById('categoriesLink').addEventListener('click', function(e) {
+                e.preventDefault();
+                // Показываем главную страницу (так как категории на ней)
+                showMainPage();
+                // Прокручиваем к категориям
+                setTimeout(() => {
+                    document.querySelector('.category-buttons').scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            });
+            
+            // Функция для генерации случайной идеи для категории
+            function generateCategoryIdea(category) {
+                let ideasArray;
+                let titleElement, descriptionElement, buttonElement;
+                
+                switch(category) {
+                    case 'programming':
+                        ideasArray = programmingIdeas;
+                        titleElement = document.getElementById('programmingIdeaTitle');
+                        descriptionElement = document.getElementById('programmingIdeaDescription');
+                        buttonElement = document.getElementById('programmingGenerateBtn');
+                        break;
+                    case 'literature':
+                        ideasArray = literatureIdeas;
+                        titleElement = document.getElementById('literatureIdeaTitle');
+                        descriptionElement = document.getElementById('literatureIdeaDescription');
+                        buttonElement = document.getElementById('literatureGenerateBtn');
+                        break;
+                    case 'history':
+                        ideasArray = historyIdeas;
+                        titleElement = document.getElementById('historyIdeaTitle');
+                        descriptionElement = document.getElementById('historyIdeaDescription');
+                        buttonElement = document.getElementById('historyGenerateBtn');
+                        break;
+                    case 'biology':
+                        ideasArray = biologyIdeas;
+                        titleElement = document.getElementById('biologyIdeaTitle');
+                        descriptionElement = document.getElementById('biologyIdeaDescription');
+                        buttonElement = document.getElementById('biologyGenerateBtn');
+                        break;
+                    case 'math':
+                        ideasArray = mathIdeas;
+                        titleElement = document.getElementById('mathIdeaTitle');
+                        descriptionElement = document.getElementById('mathIdeaDescription');
+                        buttonElement = document.getElementById('mathGenerateBtn');
+                        break;
+                    case 'sports':
+                        ideasArray = sportsIdeas;
+                        titleElement = document.getElementById('sportsIdeaTitle');
+                        descriptionElement = document.getElementById('sportsIdeaDescription');
+                        buttonElement = document.getElementById('sportsGenerateBtn');
+                        break;
+                    case 'mixed':
+                        ideasArray = mixedIdeas;
+                        titleElement = document.getElementById('mixedIdeaTitle');
+                        descriptionElement = document.getElementById('mixedIdeaDescription');
+                        buttonElement = document.getElementById('mixedGenerateBtn');
+                        break;
+                    default:
+                        return;
+                }
+                
+                if (ideasArray && ideasArray.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * ideasArray.length);
+                    const randomIdea = ideasArray[randomIndex];
+                    
+                    if (titleElement) titleElement.textContent = randomIdea.title;
+                    if (descriptionElement) descriptionElement.textContent = randomIdea.description;
+                    
+                    // Добавляем анимацию
+                    const resultElement = document.getElementById(category + 'GeneratorResult');
+                    if (resultElement) {
+                        resultElement.style.opacity = '0';
+                        
+                        setTimeout(() => {
+                            resultElement.style.transition = 'opacity 0.5s';
+                            resultElement.style.opacity = '1';
+                        }, 50);
+                    }
+                }
+                
+                // Назначаем обработчик для кнопки генерации
+                if (buttonElement) {
+                    buttonElement.onclick = function() {
+                        generateCategoryIdea(category);
+                    };
+                }
+            }
+            
+            // Инициализация генераторов для каждой категории
+            const categories = ['programming', 'literature', 'history', 'biology', 'math', 'sports', 'mixed'];
+            categories.forEach(category => {
+                const button = document.getElementById(category + 'GenerateBtn');
+                if (button) {
+                    button.addEventListener('click', function() {
+                        generateCategoryIdea(category);
+                    });
+                }
+            });
+            
+            // Показываем главную страницу при загрузке
+            showMainPage();
+        });
+    </script>
+</body>
+</html>
