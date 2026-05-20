@@ -6,11 +6,7 @@
     <title>ФотоКонспект</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #f5f7fb;
             font-family: 'Inter', sans-serif;
@@ -18,221 +14,38 @@
             line-height: 1.5;
             padding: 2rem 1rem;
         }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        .header p {
-            color: #5b6e8c;
-            margin-top: 0.3rem;
-            font-size: 0.9rem;
-        }
-        .upload-card {
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            padding: 1.8rem;
-            margin-bottom: 2rem;
-        }
-        .dropzone {
-            border: 2px dashed #cbd5e1;
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            cursor: pointer;
-            transition: 0.2s;
-            background: #fefefe;
-        }
-        .dropzone:hover {
-            border-color: #3b82f6;
-            background: #f0f7ff;
-        }
-        .upload-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .file-input {
-            display: none;
-        }
-        .preview-area {
-            margin-top: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #f1f5f9;
-            border-radius: 16px;
-            padding: 0.6rem 1rem;
-        }
-        .preview-img {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        .preview-img img {
-            width: 48px;
-            height: 48px;
-            object-fit: cover;
-            border-radius: 10px;
-            background: #e2e8f0;
-        }
-        .file-name {
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-        .clear-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: #94a3b8;
-            padding: 0 6px;
-        }
-        .clear-btn:hover {
-            color: #dc2626;
-        }
-        .mode-panel {
-            margin: 1.5rem 0 1.2rem;
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .mode-btn {
-            background: #f1f5f9;
-            border: none;
-            padding: 0.5rem 1.3rem;
-            border-radius: 40px;
-            font-weight: 500;
-            font-size: 0.85rem;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            color: #1e293b;
-            transition: 0.2s;
-        }
-        .mode-btn.active {
-            background: #1e3c72;
-            color: white;
-        }
-        .analyze-btn {
-            background: linear-gradient(95deg, #1e3c72, #2a5298);
-            width: 100%;
-            border: none;
-            padding: 0.85rem;
-            border-radius: 44px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 0.5rem;
-        }
-        .analyze-btn:disabled {
-            background: #94a3b8;
-            cursor: not-allowed;
-        }
-        .result-card {
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            padding: 1.5rem;
-        }
-        .result-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 0.7rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .result-header h3 {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        .badge-mode {
-            background: #f1f5f9;
-            padding: 0.2rem 0.8rem;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-        .summary-content {
-            font-size: 0.95rem;
-            line-height: 1.55;
-            white-space: pre-wrap;
-            word-break: break-word;
-            max-height: 500px;
-            overflow-y: auto;
-        }
-        .placeholder-text {
-            color: #94a3b8;
-            text-align: center;
-            padding: 2rem 0;
-        }
-        .error-message {
-            background: #fef2f2;
-            color: #dc2626;
-            padding: 1rem;
-            border-radius: 16px;
-            border-left: 4px solid #dc2626;
-        }
-        .loader {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 0.7s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .progress-bar-container {
-            background: #e2e8f0;
-            border-radius: 20px;
-            height: 4px;
-            margin: 12px 0;
-            overflow: hidden;
-        }
-        .progress-bar {
-            width: 0%;
-            height: 100%;
-            background: #3b82f6;
-            transition: width 0.2s;
-        }
-        .status-text {
-            font-size: 0.7rem;
-            color: #64748b;
-            text-align: center;
-            margin-top: 6px;
-        }
-        .footer {
-            text-align: center;
-            font-size: 0.7rem;
-            color: #94a3b8;
-            margin-top: 1.5rem;
-        }
-        @media (max-width: 640px) {
-            body { padding: 1rem; }
-            .upload-card { padding: 1rem; }
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #1e3c72, #2a5298); background-clip: text; -webkit-background-clip: text; color: transparent; }
+        .upload-card { background: white; border-radius: 28px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 1.8rem; margin-bottom: 2rem; }
+        .dropzone { border: 2px dashed #cbd5e1; border-radius: 24px; padding: 2rem; text-align: center; cursor: pointer; transition: 0.2s; background: #fefefe; }
+        .dropzone:hover { border-color: #3b82f6; background: #f0f7ff; }
+        .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .file-input { display: none; }
+        .preview-area { margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; background: #f1f5f9; border-radius: 16px; padding: 0.6rem 1rem; }
+        .preview-img { display: flex; align-items: center; gap: 0.8rem; }
+        .preview-img img { width: 48px; height: 48px; object-fit: cover; border-radius: 10px; }
+        .file-name { font-size: 0.85rem; font-weight: 500; }
+        .clear-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #94a3b8; padding: 0 6px; }
+        .clear-btn:hover { color: #dc2626; }
+        .mode-panel { margin: 1.5rem 0 1.2rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+        .mode-btn { background: #f1f5f9; border: none; padding: 0.5rem 1.3rem; border-radius: 40px; font-weight: 500; font-size: 0.85rem; cursor: pointer; font-family: 'Inter', sans-serif; color: #1e293b; transition: 0.2s; }
+        .mode-btn.active { background: #1e3c72; color: white; }
+        .analyze-btn { background: linear-gradient(95deg, #1e3c72, #2a5298); width: 100%; border: none; padding: 0.85rem; border-radius: 44px; font-weight: 600; font-size: 1rem; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 0.5rem; }
+        .analyze-btn:disabled { background: #94a3b8; cursor: not-allowed; }
+        .result-card { background: white; border-radius: 28px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 1.5rem; }
+        .result-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.7rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px; }
+        .result-header h3 { font-weight: 600; font-size: 1.1rem; }
+        .badge-mode { background: #f1f5f9; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 500; }
+        .summary-content { font-size: 0.95rem; line-height: 1.55; white-space: pre-wrap; word-break: break-word; max-height: 500px; overflow-y: auto; }
+        .placeholder-text { color: #94a3b8; text-align: center; padding: 2rem 0; }
+        .error-message { background: #fef2f2; color: #dc2626; padding: 1rem; border-radius: 16px; border-left: 4px solid #dc2626; }
+        .loader { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.7s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .progress-bar-container { background: #e2e8f0; border-radius: 20px; height: 4px; margin: 12px 0; overflow: hidden; }
+        .progress-bar { width: 0%; height: 100%; background: #3b82f6; transition: width 0.2s; }
+        .status-text { font-size: 0.7rem; color: #64748b; text-align: center; margin-top: 6px; }
+        @media (max-width: 640px) { body { padding: 1rem; } .upload-card { padding: 1rem; } }
     </style>
 </head>
 <body>
@@ -246,7 +59,7 @@
         <div class="dropzone" id="dropzone">
             <div class="upload-icon">📸</div>
             <div class="upload-title">Нажмите или перетащите фото</div>
-            <div class="upload-sub">JPG, PNG, WebP</div>
+            <div class="upload-sub">JPG, PNG, WebP (до 5 МБ)</div>
             <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="file-input">
         </div>
         <div id="previewContainer" style="display: none;">
@@ -282,7 +95,6 @@
             <div class="placeholder-text">Загрузите фото и нажмите "Создать конспект"</div>
         </div>
     </div>
-    <div class="footer"></div>
 </div>
 
 <script>
@@ -329,8 +141,7 @@
         if (mode === 'summary') {
             let sentences = text.split(/(?<=[.!?;:])\s+/);
             if (sentences.length <= 2) {
-                let short = text.length > 600 ? text.substring(0, 580) + '…' : text;
-                return short;
+                return text.length > 600 ? text.substring(0, 580) + '…' : text;
             }
             let keep = Math.min(8, Math.max(2, Math.ceil(sentences.length / 2)));
             return sentences.slice(0, keep).join(' ');
@@ -350,10 +161,6 @@
             }
             if (!result) result = '• ' + text.split(/(?<=[.!?])\s+/).join('\n• ');
             return result;
-        }
-
-        if (mode === 'expand') {
-            return text;
         }
 
         return text;
@@ -380,12 +187,17 @@
                 formData.append('OCREngine', '2');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'https://api.ocr.space/parse/image', true);
+                xhr.open('POST', 'https://cors-anywhere.herokuapp.com/https://api.ocr.space/parse/image', true);
                 
+                let lastPercent = 0;
                 xhr.upload.onprogress = (ev) => {
-                    if (ev.lengthComputable) {
-                        progressBar.style.width = `${(ev.loaded / ev.total) * 100}%`;
-                        statusText.innerText = `Загрузка... ${Math.round(ev.percent)}%`;
+                    if (ev.lengthComputable && ev.total > 0) {
+                        const percent = Math.round((ev.loaded / ev.total) * 100);
+                        if (percent !== lastPercent) {
+                            lastPercent = percent;
+                            progressBar.style.width = `${percent}%`;
+                            statusText.innerText = `Загрузка... ${percent}%`;
+                        }
                     }
                 };
                 
@@ -398,13 +210,13 @@
                                 if (text && text.trim().length > 0) {
                                     resolve({ success: true, text: text });
                                 } else {
-                                    resolve({ success: false, error: "Текст не найден на фото" });
+                                    resolve({ success: false, error: "Текст не найден" });
                                 }
                             } else {
-                                resolve({ success: false, error: "Не удалось распознать" });
+                                resolve({ success: false, error: "Ошибка распознавания" });
                             }
                         } catch (e) {
-                            resolve({ success: false, error: "Ошибка ответа сервера" });
+                            resolve({ success: false, error: "Ошибка ответа" });
                         }
                     } else {
                         resolve({ success: false, error: `Ошибка ${xhr.status}` });
@@ -412,7 +224,7 @@
                 };
                 
                 xhr.onerror = () => {
-                    resolve({ success: false, error: "Нет соединения с сервером" });
+                    resolve({ success: false, error: "Нет соединения" });
                 };
                 
                 xhr.send(formData);
@@ -442,7 +254,7 @@
             
             if (!result.success) {
                 recognizedText = null;
-                showError(result.error || "Не удалось распознать текст. Попробуйте другое фото.");
+                showError(result.error || "Не удалось распознать текст");
                 return;
             }
             
@@ -451,7 +263,7 @@
             displayOutput(output);
         } catch (err) {
             progressArea.style.display = 'none';
-            showError("Ошибка. Проверьте интернет и попробуйте снова.");
+            showError("Ошибка. Проверьте интернет");
         } finally {
             isProcessing = false;
             analyzeBtn.disabled = false;
@@ -481,7 +293,7 @@
             dropzone.style.display = 'none';
         };
         reader.readAsDataURL(file);
-        summaryOutput.innerHTML = `<div class="placeholder-text">Фото загружено. Нажмите "Создать конспект".</div>`;
+        summaryOutput.innerHTML = `<div class="placeholder-text">Фото загружено. Нажмите "Создать конспект"</div>`;
         progressArea.style.display = 'none';
     }
 
