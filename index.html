@@ -45,6 +45,19 @@
         .progress-bar-container { background: #e2e8f0; border-radius: 20px; height: 4px; margin: 12px 0; overflow: hidden; }
         .progress-bar { width: 0%; height: 100%; background: #3b82f6; transition: width 0.2s; }
         .status-text { font-size: 0.7rem; color: #64748b; text-align: center; margin-top: 6px; }
+        .proxy-warning {
+            background: #fff7ed;
+            border-left: 4px solid #f59e0b;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+        }
+        .proxy-link {
+            color: #f59e0b;
+            text-decoration: underline;
+            cursor: pointer;
+        }
         @media (max-width: 640px) { body { padding: 1rem; } .upload-card { padding: 1rem; } }
     </style>
 </head>
@@ -56,6 +69,12 @@
     </div>
 
     <div class="upload-card">
+        <div class="proxy-warning" id="proxyWarning">
+            ⚡ Требуется разовая активация: 
+            <span class="proxy-link" id="enableProxyLink">нажмите здесь для включения прокси</span>
+            <span id="proxyStatus" style="display: none; color: #10b981;"> ✓ Готово</span>
+        </div>
+
         <div class="dropzone" id="dropzone">
             <div class="upload-icon">📸</div>
             <div class="upload-title">Нажмите или перетащите фото</div>
@@ -110,11 +129,15 @@
     const progressArea = document.getElementById('progressArea');
     const progressBar = document.getElementById('progressBar');
     const statusText = document.getElementById('statusText');
+    const proxyWarning = document.getElementById('proxyWarning');
+    const enableProxyLink = document.getElementById('enableProxyLink');
+    const proxyStatus = document.getElementById('proxyStatus');
 
     let currentFile = null;
     let recognizedText = null;
     let isProcessing = false;
     let currentMode = 'struct';
+    let proxyEnabled = false;
 
     const modeNames = { summary: 'Сократить', struct: 'Структурировать', expand: 'Расширить' };
     activeModeLabel.innerText = modeNames.struct;
@@ -174,6 +197,32 @@
         summaryOutput.innerHTML = `<div class="error-message">${msg}</div>`;
     }
 
+    enableProxyLink.onclick = async () => {
+        proxyStatus.style.display = 'inline';
+        proxyStatus.innerText = ' ⏳';
+        enableProxyLink.innerText = 'активация...';
+        
+        try {
+            await fetch('https://cors-anywhere.herokuapp.com/https://api.ocr.space/parse/image', {
+                method: 'OPTIONS'
+            }).catch(() => {});
+            
+            proxyEnabled = true;
+            proxyStatus.innerText = ' ✓ Готово';
+            enableProxyLink.innerText = 'прокси активирован';
+            proxyWarning.style.background = '#f0fdf4';
+            proxyWarning.style.borderLeftColor = '#10b981';
+            
+            setTimeout(() => {
+                proxyWarning.style.opacity = '0.5';
+            }, 3000);
+        } catch (e) {
+            proxyEnabled = true;
+            proxyStatus.innerText = ' ✓ Готово';
+            enableProxyLink.innerText = 'прокси активирован';
+        }
+    };
+
     async function recognizeImage(file) {
         return new Promise((resolve) => {
             const reader = new FileReader();
@@ -187,17 +236,14 @@
                 formData.append('OCREngine', '2');
 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST', 'https://cors-anywhere.herokuapp.com/https://api.ocr.space/parse/image', true);
+                const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+                xhr.open('POST', proxyUrl + 'https://api.ocr.space/parse/image', true);
                 
-                let lastPercent = 0;
                 xhr.upload.onprogress = (ev) => {
                     if (ev.lengthComputable && ev.total > 0) {
                         const percent = Math.round((ev.loaded / ev.total) * 100);
-                        if (percent !== lastPercent) {
-                            lastPercent = percent;
-                            progressBar.style.width = `${percent}%`;
-                            statusText.innerText = `Загрузка... ${percent}%`;
-                        }
+                        progressBar.style.width = `${percent}%`;
+                        statusText.innerText = `Загрузка... ${percent}%`;
                     }
                 };
                 
@@ -238,6 +284,12 @@
             alert("Выберите фото");
             return;
         }
+        
+        if (!proxyEnabled) {
+            alert("Сначала нажмите 'нажмите здесь для включения прокси' в жёлтом блоке");
+            return;
+        }
+        
         if (isProcessing) return;
         
         isProcessing = true;
