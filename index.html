@@ -3,136 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ФотоКонспект — реальное распознавание через OCR.space</title>
+    <title>ФотоКонспект</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: #f0f4f9;
-            font-family: 'Inter', sans-serif;
-            color: #1a2a3f;
-            line-height: 1.5;
-            padding: 1.5rem;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container { max-width: 1300px; margin: 0 auto; }
-        .header { text-align: center; margin-bottom: 2rem; }
+        body {
+            background: #f5f7fb;
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
         .header h1 {
             font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #1a4d6b, #0e3a52);
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
-        .header p { color: #4a627a; margin-top: 0.4rem; font-size: 0.9rem; }
+        .header p {
+            color: #5b6e8c;
+            margin-top: 0.3rem;
+            font-size: 0.9rem;
+        }
         .upload-card {
             background: white;
             border-radius: 28px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             padding: 1.8rem;
             margin-bottom: 2rem;
         }
         .dropzone {
-            border: 2px dashed #bfd6e8;
+            border: 2px dashed #cbd5e1;
             border-radius: 24px;
-            padding: 2rem 1.5rem;
+            padding: 2rem;
             text-align: center;
             cursor: pointer;
             transition: 0.2s;
             background: #fefefe;
         }
-        .dropzone:hover { border-color: #2c7da0; background: #f5faff; }
-        .dropzone.drag-over { border-color: #166b8a; background: #eef4fc; }
-        .upload-icon { font-size: 2.8rem; margin-bottom: 0.5rem; }
-        .file-input { display: none; }
+        .dropzone:hover {
+            border-color: #3b82f6;
+            background: #f0f7ff;
+        }
+        .upload-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .file-input {
+            display: none;
+        }
         .preview-area {
-            margin-top: 1.2rem;
+            margin-top: 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: #f0f5fa;
-            border-radius: 20px;
-            padding: 0.7rem 1.2rem;
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 0.6rem 1rem;
         }
-        .preview-img { display: flex; align-items: center; gap: 1rem; }
-        .preview-img img { width: 50px; height: 50px; object-fit: cover; border-radius: 12px; }
-        .file-name { font-size: 0.85rem; font-weight: 500; word-break: break-all; }
-        .clear-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #8ba0b2; padding: 0 8px; }
-        .clear-btn:hover { color: #c2412c; }
+        .preview-img {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .preview-img img {
+            width: 48px;
+            height: 48px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: #e2e8f0;
+        }
+        .file-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .clear-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #94a3b8;
+            padding: 0 6px;
+        }
+        .clear-btn:hover {
+            color: #dc2626;
+        }
         .mode-panel {
             margin: 1.5rem 0 1.2rem;
             display: flex;
-            flex-wrap: wrap;
             gap: 0.8rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
         .mode-btn {
-            background: #eef2f8;
+            background: #f1f5f9;
             border: none;
-            padding: 0.6rem 1.5rem;
+            padding: 0.5rem 1.3rem;
             border-radius: 40px;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
-            color: #1f3b4c;
+            color: #1e293b;
             transition: 0.2s;
         }
-        .mode-btn.active { background: #1f5e7e; color: white; box-shadow: 0 4px 12px rgba(31,94,126,0.25); }
-        .mode-btn:not(.active):hover { background: #e2e9f2; transform: translateY(-1px); }
+        .mode-btn.active {
+            background: #1e3c72;
+            color: white;
+        }
         .analyze-btn {
-            background: linear-gradient(95deg, #1f5e7e, #12455f);
+            background: linear-gradient(95deg, #1e3c72, #2a5298);
             width: 100%;
             border: none;
-            padding: 0.9rem;
+            padding: 0.85rem;
             border-radius: 44px;
             font-weight: 600;
             font-size: 1rem;
             color: white;
             cursor: pointer;
-            transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             margin-top: 0.5rem;
         }
-        .analyze-btn:disabled { background: #9eb7ca; cursor: not-allowed; opacity: 0.7; }
+        .analyze-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
         .result-card {
             background: white;
             border-radius: 28px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
-            padding: 1.7rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            padding: 1.5rem;
         }
         .result-header {
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            border-bottom: 1px solid #e5edf4;
+            border-bottom: 1px solid #e2e8f0;
             padding-bottom: 0.7rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
             gap: 8px;
         }
-        .result-header h3 { font-weight: 600; font-size: 1.2rem; }
-        .badge-mode { background: #eef2f8; padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.75rem; font-weight: 500; }
+        .result-header h3 {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .badge-mode {
+            background: #f1f5f9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
         .summary-content {
             font-size: 0.95rem;
             line-height: 1.55;
             white-space: pre-wrap;
             word-break: break-word;
-            max-height: 550px;
+            max-height: 500px;
             overflow-y: auto;
-            padding: 0.2rem;
         }
-        .placeholder-text { color: #829ab0; text-align: center; padding: 2rem 0; }
+        .placeholder-text {
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 0;
+        }
         .error-message {
-            background: #fff0ed;
-            color: #b13b28;
+            background: #fef2f2;
+            color: #dc2626;
             padding: 1rem;
-            border-radius: 20px;
-            font-weight: 500;
-            border-left: 4px solid #c2412c;
+            border-radius: 16px;
+            border-left: 4px solid #dc2626;
         }
         .loader {
             display: inline-block;
@@ -143,26 +201,52 @@
             border-top-color: white;
             animation: spin 0.7s linear infinite;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .progress-overall { background: #e9ecef; border-radius: 40px; height: 6px; width: 100%; margin: 12px 0; overflow: hidden; }
-        .progress-bar { width: 0%; height: 100%; background: #1f5e7e; transition: width 0.2s; }
-        .status-text { font-size: 0.75rem; color: #4a627a; text-align: center; margin-top: 6px; }
-        .footer-note { text-align: center; font-size: 0.7rem; color: #7c93aa; margin-top: 1.8rem; }
-        @media (max-width: 700px) { body { padding: 1rem; } .upload-card { padding: 1rem; } }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .progress-bar-container {
+            background: #e2e8f0;
+            border-radius: 20px;
+            height: 4px;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #3b82f6;
+            transition: width 0.2s;
+        }
+        .status-text {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-align: center;
+            margin-top: 6px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            margin-top: 1.5rem;
+        }
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .upload-card { padding: 1rem; }
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <div class="header">
         <h1>📷 ФотоКонспект</h1>
-        <p>Загрузите фото с текстом — OCR.space распознаёт реальные слова. Конспект только из того, что написано на фото.</p>
+        <p>Загрузите фото — получите конспект</p>
     </div>
 
     <div class="upload-card">
         <div class="dropzone" id="dropzone">
-            <div class="upload-icon">🖼️🔍</div>
+            <div class="upload-icon">📸</div>
             <div class="upload-title">Нажмите или перетащите фото</div>
-            <div class="upload-sub">JPG, PNG (до 5 МБ). Текст должен быть чётким.</div>
+            <div class="upload-sub">JPG, PNG, WebP</div>
             <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="file-input">
         </div>
         <div id="previewContainer" style="display: none;">
@@ -176,35 +260,32 @@
         </div>
 
         <div class="mode-panel">
-            <button class="mode-btn" data-mode="summary">✂️ Сократить</button>
-            <button class="mode-btn active" data-mode="struct">📑 Структурировать</button>
-            <button class="mode-btn" data-mode="expand">🔍 Расширить</button>
+            <button class="mode-btn" data-mode="summary">Сократить</button>
+            <button class="mode-btn active" data-mode="struct">Структурировать</button>
+            <button class="mode-btn" data-mode="expand">Расширить</button>
         </div>
 
         <div id="progressArea" style="display: none;">
-            <div class="progress-overall"><div class="progress-bar" id="progressBar"></div></div>
-            <div class="status-text" id="statusText">Отправка на распознавание...</div>
+            <div class="progress-bar-container"><div class="progress-bar" id="progressBar"></div></div>
+            <div class="status-text" id="statusText">Отправка...</div>
         </div>
 
-        <button class="analyze-btn" id="analyzeBtn">✨ Распознать текст и сделать конспект</button>
+        <button class="analyze-btn" id="analyzeBtn">✨ Создать конспект</button>
     </div>
 
     <div class="result-card">
         <div class="result-header">
-            <h3>📌 Конспект (только с этого фото)</h3>
-            <span class="badge-mode" id="activeModeLabel">Структурированный</span>
+            <h3>Конспект</h3>
+            <span class="badge-mode" id="activeModeLabel">Структурировать</span>
         </div>
         <div id="summaryOutput" class="summary-content">
-            <div class="placeholder-text">⬆️ Загрузите фото и нажмите «Распознать текст».<br>OCR.space прочитает реальные слова с картинки.</div>
+            <div class="placeholder-text">Загрузите фото и нажмите "Создать конспект"</div>
         </div>
     </div>
-    <div class="footer-note">
-        ⚡ Используется бесплатный API OCR.space. Конспект строится ТОЛЬКО из распознанного текста.
-    </div>
+    <div class="footer"></div>
 </div>
 
 <script>
-    // DOM элементы
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('fileInput');
     const previewContainer = document.getElementById('previewContainer');
@@ -218,15 +299,14 @@
     const progressBar = document.getElementById('progressBar');
     const statusText = document.getElementById('statusText');
 
-    let currentImageFile = null;
-    let currentRecognizedText = null;
+    let currentFile = null;
+    let recognizedText = null;
     let isProcessing = false;
     let currentMode = 'struct';
 
-    const modeNames = { summary: 'Сокращённый', struct: 'Структурированный', expand: 'Расширенный' };
+    const modeNames = { summary: 'Сократить', struct: 'Структурировать', expand: 'Расширить' };
     activeModeLabel.innerText = modeNames.struct;
 
-    // Переключение режимов
     document.querySelectorAll('.mode-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const mode = btn.dataset.mode;
@@ -235,218 +315,205 @@
                 document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 activeModeLabel.innerText = modeNames[currentMode];
-                if (currentRecognizedText && currentRecognizedText.trim().length > 0) {
-                    const transformed = transformTextByMode(currentRecognizedText, currentMode);
-                    displayFormattedSummary(transformed);
+                if (recognizedText && recognizedText.trim()) {
+                    const transformed = transformText(recognizedText, currentMode);
+                    displayOutput(transformed);
                 }
             }
         });
     });
 
-    // ----- Трансформация текста (только из распознанного, ничего не выдумываем) -----
-    function transformTextByMode(text, mode) {
-        if (!text || text.trim() === "") {
-            return "⚠️ Распознанный текст отсутствует. Попробуйте загрузить более чёткое фото.";
-        }
-        
+    function transformText(text, mode) {
+        if (!text || !text.trim()) return "Нет текста для обработки";
+
         if (mode === 'summary') {
             let sentences = text.split(/(?<=[.!?;:])\s+/);
             if (sentences.length <= 2) {
-                let short = text.length > 500 ? text.substring(0, 480) + '…' : text;
-                return "✂️ СОКРАЩЁННЫЙ КОНСПЕКТ:\n\n" + short;
+                let short = text.length > 600 ? text.substring(0, 580) + '…' : text;
+                return short;
             }
-            let keepCount = Math.min(10, Math.max(3, Math.ceil(sentences.length / 2)));
-            let summaryText = sentences.slice(0, keepCount).join(' ');
-            if (summaryText.length > 1000) summaryText = summaryText.substring(0, 980) + '…';
-            return "✂️ СОКРАЩЁННЫЙ КОНСПЕКТ:\n\n" + summaryText;
+            let keep = Math.min(8, Math.max(2, Math.ceil(sentences.length / 2)));
+            return sentences.slice(0, keep).join(' ');
         }
-        
+
         if (mode === 'struct') {
             let lines = text.split(/\n+/);
-            let result = "📑 СТРУКТУРИРОВАННЫЙ КОНСПЕКТ\n\n";
-            let items = [];
+            let result = '';
             for (let line of lines) {
                 line = line.trim();
-                if (line === "") continue;
-                if (line.length > 45 || line.includes(':') || /^[А-Я0-9]/.test(line)) {
-                    items.push(`📌 ${line}`);
+                if (!line) continue;
+                if (line.length > 40 || line.includes(':') || /^[А-Я0-9]/.test(line)) {
+                    result += '\n📌 ' + line + '\n';
                 } else {
-                    items.push(`   • ${line}`);
+                    result += '• ' + line + '\n';
                 }
             }
-            if (items.length === 0) {
-                let parts = text.split(/(?<=[.!?])\s+/);
-                for (let p of parts.slice(0, 8)) if (p.trim()) items.push(`• ${p.trim()}`);
-            }
-            result += items.join('\n');
+            if (!result) result = '• ' + text.split(/(?<=[.!?])\s+/).join('\n• ');
             return result;
         }
-        
+
         if (mode === 'expand') {
-            let result = "🔍 РАСШИРЕННЫЙ КОНСПЕКТ\n\n" + text;
-            if (text.toLowerCase().includes('важно') || text.toLowerCase().includes('ключ')) {
-                result += "\n\n📎 Примечание: в тексте выделены важные моменты.";
-            }
-            return result;
+            return text;
         }
-        
+
         return text;
     }
 
-    function displayFormattedSummary(content) {
+    function displayOutput(content) {
         summaryOutput.innerHTML = content.replace(/\n/g, '<br>');
     }
 
-    function displayError(message) {
-        summaryOutput.innerHTML = `<div class="error-message">⚠️ ${message}</div>`;
+    function showError(msg) {
+        summaryOutput.innerHTML = `<div class="error-message">${msg}</div>`;
     }
 
-    // ----- РАСПОЗНАВАНИЕ ЧЕРЕЗ OCR.SPACE API (РАБОТАЕТ НА 100%) -----
-    async function recognizeWithOCRspace(imageFile) {
-        return new Promise((resolve, reject) => {
-            const formData = new FormData();
-            formData.append('file', imageFile);
-            formData.append('language', 'rus');  // русский язык
-            formData.append('apikey', 'K80983281188957');  // бесплатный демо-ключ (ограничение 500 запросов/месяц)
-            formData.append('isOverlayRequired', 'false');
-            formData.append('detectOrientation', 'true');
-            formData.append('scale', 'true');
-            formData.append('OCREngine', '2');  // 2 = стандартный движок, хорошо работает
+    async function recognizeImage(file) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result.split(',')[1];
+                
+                const formData = new FormData();
+                formData.append('base64Image', base64);
+                formData.append('language', 'rus');
+                formData.append('apikey', 'K80983281188957');
+                formData.append('OCREngine', '2');
 
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'https://api.ocr.space/parse/image', true);
-            
-            xhr.upload.onprogress = (e) => {
-                if (e.lengthComputable) {
-                    const percent = (e.loaded / e.total) * 100;
-                    progressBar.style.width = `${percent * 0.7}%`;
-                    statusText.innerText = `Загрузка фото... ${Math.round(percent)}%`;
-                }
-            };
-            
-            xhr.onload = () => {
-                if (xhr.status === 200) {
-                    try {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.IsErroredOnProcessing) {
-                            resolve({ success: false, text: null, error: response.ErrorMessage?.[0] || "Ошибка распознавания" });
-                        } else if (response.ParsedResults && response.ParsedResults.length > 0) {
-                            const parsedText = response.ParsedResults[0].ParsedText;
-                            if (parsedText && parsedText.trim().length > 0) {
-                                resolve({ success: true, text: parsedText });
-                            } else {
-                                resolve({ success: false, text: null, error: "Текст на фото не найден. Возможно, фото слишком тёмное или нет букв." });
-                            }
-                        } else {
-                            resolve({ success: false, text: null, error: "Не удалось распознать текст" });
-                        }
-                    } catch (e) {
-                        resolve({ success: false, text: null, error: "Ошибка обработки ответа сервера" });
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://api.ocr.space/parse/image', true);
+                
+                xhr.upload.onprogress = (ev) => {
+                    if (ev.lengthComputable) {
+                        progressBar.style.width = `${(ev.loaded / ev.total) * 100}%`;
+                        statusText.innerText = `Загрузка... ${Math.round(ev.percent)}%`;
                     }
-                } else {
-                    resolve({ success: false, text: null, error: `Ошибка сервера: ${xhr.status}` });
-                }
+                };
+                
+                xhr.onload = () => {
+                    if (xhr.status === 200) {
+                        try {
+                            const resp = JSON.parse(xhr.responseText);
+                            if (resp.ParsedResults && resp.ParsedResults[0] && resp.ParsedResults[0].ParsedText) {
+                                const text = resp.ParsedResults[0].ParsedText;
+                                if (text && text.trim().length > 0) {
+                                    resolve({ success: true, text: text });
+                                } else {
+                                    resolve({ success: false, error: "Текст не найден на фото" });
+                                }
+                            } else {
+                                resolve({ success: false, error: "Не удалось распознать" });
+                            }
+                        } catch (e) {
+                            resolve({ success: false, error: "Ошибка ответа сервера" });
+                        }
+                    } else {
+                        resolve({ success: false, error: `Ошибка ${xhr.status}` });
+                    }
+                };
+                
+                xhr.onerror = () => {
+                    resolve({ success: false, error: "Нет соединения с сервером" });
+                };
+                
+                xhr.send(formData);
             };
-            
-            xhr.onerror = () => {
-                resolve({ success: false, text: null, error: "Ошибка соединения с сервером распознавания" });
-            };
-            
-            xhr.send(formData);
+            reader.readAsDataURL(file);
         });
     }
 
-    // ----- Основной процесс -----
-    async function processPhotoAndRecognize() {
-        if (!currentImageFile) {
-            alert("Сначала загрузите фотографию с текстом.");
+    async function processImage() {
+        if (!currentFile) {
+            alert("Выберите фото");
             return;
         }
         if (isProcessing) return;
+        
         isProcessing = true;
         analyzeBtn.disabled = true;
-        analyzeBtn.innerHTML = `<span class="loader"></span> Распознаём...`;
+        analyzeBtn.innerHTML = `<span class="loader"></span> Распознавание...`;
         progressArea.style.display = 'block';
         progressBar.style.width = '0%';
-        statusText.innerText = 'Отправка на распознавание...';
-        summaryOutput.innerHTML = `<div class="placeholder-text">🔍 OCR.space анализирует фото и извлекает текст...</div>`;
-        
+        statusText.innerText = 'Отправка...';
+        summaryOutput.innerHTML = `<div class="placeholder-text">Распознавание текста...</div>`;
+
         try {
-            const result = await recognizeWithOCRspace(currentImageFile);
+            const result = await recognizeImage(currentFile);
             progressArea.style.display = 'none';
             
             if (!result.success) {
-                currentRecognizedText = null;
-                displayError(result.error || "Не удалось распознать текст. Попробуйте фото с более чёткими буквами.");
+                recognizedText = null;
+                showError(result.error || "Не удалось распознать текст. Попробуйте другое фото.");
                 return;
             }
             
-            currentRecognizedText = result.text;
-            console.log("Распознанный текст:", currentRecognizedText);
-            
-            const finalSummary = transformTextByMode(currentRecognizedText, currentMode);
-            displayFormattedSummary(finalSummary);
-            
+            recognizedText = result.text;
+            const output = transformText(recognizedText, currentMode);
+            displayOutput(output);
         } catch (err) {
-            console.error(err);
             progressArea.style.display = 'none';
-            currentRecognizedText = null;
-            displayError("Ошибка при распознавании. Проверьте подключение к интернету и попробуйте снова.");
+            showError("Ошибка. Проверьте интернет и попробуйте снова.");
         } finally {
             isProcessing = false;
             analyzeBtn.disabled = false;
-            analyzeBtn.innerHTML = `✨ Распознать текст и сделать конспект`;
+            analyzeBtn.innerHTML = `✨ Создать конспект`;
         }
     }
 
-    // --- Загрузка и превью файла ---
     function handleFile(file) {
         if (!file) return;
         if (!file.type.match('image.*')) {
-            alert("Пожалуйста, загрузите изображение (JPG, PNG, WebP).");
+            alert("Поддерживаются JPG, PNG, WebP");
             return;
         }
         if (file.size > 5 * 1024 * 1024) {
-            alert("Максимальный размер 5 МБ (бесплатное ограничение OCR.space).");
+            alert("Максимальный размер 5 МБ");
             return;
         }
-        currentImageFile = file;
-        currentRecognizedText = null;
+        
+        currentFile = file;
+        recognizedText = null;
+        
         const reader = new FileReader();
         reader.onload = (e) => {
             previewImg.src = e.target.result;
-            fileNameSpan.innerText = file.name.length > 40 ? file.name.slice(0, 37) + '…' : file.name;
+            fileNameSpan.innerText = file.name.length > 35 ? file.name.slice(0, 32) + '...' : file.name;
             previewContainer.style.display = 'block';
             dropzone.style.display = 'none';
         };
         reader.readAsDataURL(file);
-        summaryOutput.innerHTML = `<div class="placeholder-text">✅ Фото "${file.name}" загружено. Нажмите «Распознать текст».</div>`;
+        summaryOutput.innerHTML = `<div class="placeholder-text">Фото загружено. Нажмите "Создать конспект".</div>`;
         progressArea.style.display = 'none';
     }
-    
+
     function clearFile() {
-        currentImageFile = null;
-        currentRecognizedText = null;
+        currentFile = null;
+        recognizedText = null;
         previewContainer.style.display = 'none';
         dropzone.style.display = 'block';
         fileInput.value = '';
-        summaryOutput.innerHTML = `<div class="placeholder-text">⬆️ Загрузите фото. OCR.space прочитает реальный текст и сделает конспект.</div>`;
+        summaryOutput.innerHTML = `<div class="placeholder-text">Загрузите фото и нажмите "Создать конспект"</div>`;
         progressArea.style.display = 'none';
     }
-    
-    // --- События ---
+
     dropzone.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', (e) => { if(e.target.files && e.target.files[0]) handleFile(e.target.files[0]); });
-    dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
-    dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag-over'));
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+    });
+    dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('drag-over');
+    });
+    dropzone.addEventListener('dragleave', () => {
+        dropzone.classList.remove('drag-over');
+    });
     dropzone.addEventListener('drop', (e) => {
         e.preventDefault();
         dropzone.classList.remove('drag-over');
-        if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
     });
     clearBtn.addEventListener('click', clearFile);
-    analyzeBtn.addEventListener('click', processPhotoAndRecognize);
-    
+    analyzeBtn.addEventListener('click', processImage);
+
     dropzone.style.display = 'block';
     previewContainer.style.display = 'none';
 </script>
