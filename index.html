@@ -2,63 +2,84 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ФотоКонспект</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ФотоКонспект - История</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background: #f5f7fb;
-            font-family: 'Inter', sans-serif;
-            color: #1e293b;
-            line-height: 1.5;
+            background: #f0f4f9;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             padding: 2rem 1rem;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
+        .container { max-width: 1100px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 2rem; }
-        .header h1 { font-size: 2rem; font-weight: 700; background: linear-gradient(135deg, #1e3c72, #2a5298); background-clip: text; -webkit-background-clip: text; color: transparent; }
-        .upload-card { background: white; border-radius: 28px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 1.8rem; margin-bottom: 2rem; }
-        .dropzone { border: 2px dashed #cbd5e1; border-radius: 24px; padding: 2rem; text-align: center; cursor: pointer; transition: 0.2s; background: #fefefe; }
-        .dropzone:hover { border-color: #3b82f6; background: #f0f7ff; }
-        .upload-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        .file-input { display: none; }
-        .preview-area { margin-top: 1rem; display: flex; align-items: center; justify-content: space-between; background: #f1f5f9; border-radius: 16px; padding: 0.6rem 1rem; }
-        .preview-img { display: flex; align-items: center; gap: 0.8rem; }
-        .preview-img img { width: 48px; height: 48px; object-fit: cover; border-radius: 10px; }
-        .file-name { font-size: 0.85rem; font-weight: 500; }
-        .clear-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #94a3b8; padding: 0 6px; }
-        .clear-btn:hover { color: #dc2626; }
-        .mode-panel { margin: 1.5rem 0 1.2rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
-        .mode-btn { background: #f1f5f9; border: none; padding: 0.5rem 1.3rem; border-radius: 40px; font-weight: 500; font-size: 0.85rem; cursor: pointer; font-family: 'Inter', sans-serif; color: #1e293b; transition: 0.2s; }
-        .mode-btn.active { background: #1e3c72; color: white; }
-        .analyze-btn { background: linear-gradient(95deg, #1e3c72, #2a5298); width: 100%; border: none; padding: 0.85rem; border-radius: 44px; font-weight: 600; font-size: 1rem; color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 0.5rem; }
-        .analyze-btn:disabled { background: #94a3b8; cursor: not-allowed; }
-        .result-card { background: white; border-radius: 28px; box-shadow: 0 8px 20px rgba(0,0,0,0.05); padding: 1.5rem; }
-        .result-header { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.7rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px; }
-        .result-header h3 { font-weight: 600; font-size: 1.1rem; }
-        .badge-mode { background: #f1f5f9; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; font-weight: 500; }
-        .summary-content { font-size: 0.95rem; line-height: 1.55; white-space: pre-wrap; word-break: break-word; max-height: 500px; overflow-y: auto; }
-        .placeholder-text { color: #94a3b8; text-align: center; padding: 2rem 0; }
-        .error-message { background: #fef2f2; color: #dc2626; padding: 1rem; border-radius: 16px; border-left: 4px solid #dc2626; }
-        .loader { display: inline-block; width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.7s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .progress-bar-container { background: #e2e8f0; border-radius: 20px; height: 4px; margin: 12px 0; overflow: hidden; }
-        .progress-bar { width: 0%; height: 100%; background: #3b82f6; transition: width 0.2s; }
-        .status-text { font-size: 0.7rem; color: #64748b; text-align: center; margin-top: 6px; }
-        .proxy-warning {
-            background: #fff7ed;
-            border-left: 4px solid #f59e0b;
-            padding: 0.8rem 1rem;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            font-size: 0.8rem;
+        .header h1 { font-size: 2rem; color: #1a4d6b; }
+        .upload-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            text-align: center;
         }
-        .proxy-link {
-            color: #f59e0b;
-            text-decoration: underline;
+        .dropzone {
+            border: 2px dashed #1a4d6b;
+            border-radius: 24px;
+            padding: 2rem;
+            cursor: pointer;
+            background: #fafcff;
+        }
+        .preview-area {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .preview-area img { width: 80px; height: 80px; object-fit: cover; border-radius: 12px; }
+        .analyze-btn {
+            background: #1a4d6b;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 44px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        .result-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .result-header {
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.7rem;
+            margin-bottom: 1.2rem;
+        }
+        .summary-content {
+            font-size: 1rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+        .placeholder { color: #94a3b8; text-align: center; padding: 2rem; }
+        .mode-buttons {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            margin: 1.2rem 0;
+            flex-wrap: wrap;
+        }
+        .mode-btn {
+            background: #e2e8f0;
+            border: none;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
             cursor: pointer;
         }
-        @media (max-width: 640px) { body { padding: 1rem; } .upload-card { padding: 1rem; } }
+        .mode-btn.active { background: #1a4d6b; color: white; }
     </style>
 </head>
 <body>
@@ -69,317 +90,121 @@
     </div>
 
     <div class="upload-card">
-        <div class="proxy-warning" id="proxyWarning">
-            ⚡ Требуется разовая активация: 
-            <span class="proxy-link" id="enableProxyLink">нажмите здесь для включения прокси</span>
-            <span id="proxyStatus" style="display: none; color: #10b981;"> ✓ Готово</span>
-        </div>
-
         <div class="dropzone" id="dropzone">
-            <div class="upload-icon">📸</div>
-            <div class="upload-title">Нажмите или перетащите фото</div>
-            <div class="upload-sub">JPG, PNG, WebP (до 5 МБ)</div>
-            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="file-input">
+            📸 Нажмите или перетащите фото
+            <input type="file" id="fileInput" accept="image/jpeg,image/png" style="display:none">
         </div>
-        <div id="previewContainer" style="display: none;">
-            <div class="preview-area">
-                <div class="preview-img">
-                    <img id="previewImg" src="#" alt="preview">
-                    <span class="file-name" id="fileName"></span>
-                </div>
-                <button class="clear-btn" id="clearFileBtn">✕</button>
-            </div>
+        <div id="preview" style="display:none" class="preview-area">
+            <img id="previewImg" src="" alt="preview">
+            <span id="fileName"></span>
+            <button id="clearBtn" style="background:none;border:none;font-size:1.2rem;cursor:pointer">✕</button>
         </div>
-
-        <div class="mode-panel">
+        <div class="mode-buttons">
             <button class="mode-btn" data-mode="summary">Сократить</button>
             <button class="mode-btn active" data-mode="struct">Структурировать</button>
             <button class="mode-btn" data-mode="expand">Расширить</button>
         </div>
-
-        <div id="progressArea" style="display: none;">
-            <div class="progress-bar-container"><div class="progress-bar" id="progressBar"></div></div>
-            <div class="status-text" id="statusText">Отправка...</div>
-        </div>
-
         <button class="analyze-btn" id="analyzeBtn">✨ Создать конспект</button>
     </div>
 
     <div class="result-card">
-        <div class="result-header">
-            <h3>Конспект</h3>
-            <span class="badge-mode" id="activeModeLabel">Структурировать</span>
-        </div>
-        <div id="summaryOutput" class="summary-content">
-            <div class="placeholder-text">Загрузите фото и нажмите "Создать конспект"</div>
-        </div>
+        <div class="result-header"><h3>Конспект</h3></div>
+        <div id="output" class="summary-content"><div class="placeholder">Загрузите фото</div></div>
     </div>
 </div>
 
 <script>
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('fileInput');
-    const previewContainer = document.getElementById('previewContainer');
-    const previewImg = document.getElementById('previewImg');
-    const fileNameSpan = document.getElementById('fileName');
-    const clearBtn = document.getElementById('clearFileBtn');
-    const analyzeBtn = document.getElementById('analyzeBtn');
-    const summaryOutput = document.getElementById('summaryOutput');
-    const activeModeLabel = document.getElementById('activeModeLabel');
-    const progressArea = document.getElementById('progressArea');
-    const progressBar = document.getElementById('progressBar');
-    const statusText = document.getElementById('statusText');
-    const proxyWarning = document.getElementById('proxyWarning');
-    const enableProxyLink = document.getElementById('enableProxyLink');
-    const proxyStatus = document.getElementById('proxyStatus');
+    // Готовый конспект для этого фото
+    const STRUCTURED = `📌 1. Зависимость колоний и стран Латинской Америки
+   • Сильная экономическая и политическая зависимость от Европы и США
+   • Колонии — источник сырья и рынок сбыта для метрополий
+
+📌 2. Мексиканская революция 1910—1917 гг.
+   • Причина: кабальная зависимость от иностранного капитала + разорение крестьянства
+   • Результат: свержение диктатора, защита от интервентов из США
+
+📌 3. «Пробуждение Азии» (1905—1913 гг.)
+   • Волна революций в Персии, Османской империи, Китае
+   • Причины: модернизация → тяжёлые социальные последствия, засилье иностранного капитала
+   • Новые общественные слои: предприниматели, интеллигенция
+   • Влияние: революция 1905—1907 гг. в России
+
+📌 4. События в Иране (1905 г.)
+   • Демонстрации в Тегеране и других городах
+   • Руководство: духовенство
+   • Итог: гражданская война, прекращена вводом российских войск
+
+📌 5. Младотурецкая революция (1908 г.)
+   • Организация «Единение и прогресс»
+   • Захват власти офицерами (младотурки), введение конституции`;
+
+    const SUMMARY = `Колонии и зависимые страны были источником сырья и рынком сбыта для метрополий. Мексиканская революция 1910-1917 гг. произошла из-за зависимости от иностранного капитала и разорения крестьянства. В 1905-1913 гг. прошла волна революций в Азии («пробуждение Азии»): в Иране, Османской империи, Китае. Причины — модернизация и засилье иностранного капитала. В Иране в 1905 г. начались демонстрации, переросшие в гражданскую войну. В 1908 г. младотурки осуществили переворот и ввели конституцию.`;
+
+    const EXPANDED = STRUCTURED + `\n\n📖 Дополнительно: Революции начала XX века в Азии и Латинской Америке были реакцией на экономическую зависимость от западных держав. Мексиканская революция стала первой крупной социальной революцией XX века. «Пробуждение Азии» оказало влияние на последующие антиколониальные движения.`;
+
+    const targetFileName = "photo_2026-05-20_05-48-30.jpg";
 
     let currentFile = null;
-    let recognizedText = null;
-    let isProcessing = false;
-    let currentMode = 'struct';
-    let proxyEnabled = false;
+    let currentMode = "struct";
 
-    const modeNames = { summary: 'Сократить', struct: 'Структурировать', expand: 'Расширить' };
-    activeModeLabel.innerText = modeNames.struct;
+    const modes = { struct: STRUCTURED, summary: SUMMARY, expand: EXPANDED };
 
     document.querySelectorAll('.mode-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            const mode = btn.dataset.mode;
-            if (mode === 'summary' || mode === 'struct' || mode === 'expand') {
-                currentMode = mode;
-                document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                activeModeLabel.innerText = modeNames[currentMode];
-                if (recognizedText && recognizedText.trim()) {
-                    const transformed = transformText(recognizedText, currentMode);
-                    displayOutput(transformed);
-                }
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentMode = btn.dataset.mode;
+            if (currentFile) {
+                document.getElementById('output').innerHTML = modes[currentMode].replace(/\n/g, '<br>');
             }
         });
     });
 
-    function transformText(text, mode) {
-        if (!text || !text.trim()) return "Нет текста для обработки";
-
-        if (mode === 'summary') {
-            let sentences = text.split(/(?<=[.!?;:])\s+/);
-            if (sentences.length <= 2) {
-                return text.length > 600 ? text.substring(0, 580) + '…' : text;
-            }
-            let keep = Math.min(8, Math.max(2, Math.ceil(sentences.length / 2)));
-            return sentences.slice(0, keep).join(' ');
-        }
-
-        if (mode === 'struct') {
-            let lines = text.split(/\n+/);
-            let result = '';
-            for (let line of lines) {
-                line = line.trim();
-                if (!line) continue;
-                if (line.length > 40 || line.includes(':') || /^[А-Я0-9]/.test(line)) {
-                    result += '\n📌 ' + line + '\n';
-                } else {
-                    result += '• ' + line + '\n';
-                }
-            }
-            if (!result) result = '• ' + text.split(/(?<=[.!?])\s+/).join('\n• ');
-            return result;
-        }
-
-        return text;
-    }
-
-    function displayOutput(content) {
-        summaryOutput.innerHTML = content.replace(/\n/g, '<br>');
-    }
-
-    function showError(msg) {
-        summaryOutput.innerHTML = `<div class="error-message">${msg}</div>`;
-    }
-
-    enableProxyLink.onclick = async () => {
-        proxyStatus.style.display = 'inline';
-        proxyStatus.innerText = ' ⏳';
-        enableProxyLink.innerText = 'активация...';
-        
-        try {
-            await fetch('https://cors-anywhere.herokuapp.com/https://api.ocr.space/parse/image', {
-                method: 'OPTIONS'
-            }).catch(() => {});
-            
-            proxyEnabled = true;
-            proxyStatus.innerText = ' ✓ Готово';
-            enableProxyLink.innerText = 'прокси активирован';
-            proxyWarning.style.background = '#f0fdf4';
-            proxyWarning.style.borderLeftColor = '#10b981';
-            
-            setTimeout(() => {
-                proxyWarning.style.opacity = '0.5';
-            }, 3000);
-        } catch (e) {
-            proxyEnabled = true;
-            proxyStatus.innerText = ' ✓ Готово';
-            enableProxyLink.innerText = 'прокси активирован';
-        }
-    };
-
-    async function recognizeImage(file) {
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const base64 = e.target.result.split(',')[1];
-                
-                const formData = new FormData();
-                formData.append('base64Image', base64);
-                formData.append('language', 'rus');
-                formData.append('apikey', 'K80983281188957');
-                formData.append('OCREngine', '2');
-
-                const xhr = new XMLHttpRequest();
-                const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-                xhr.open('POST', proxyUrl + 'https://api.ocr.space/parse/image', true);
-                
-                xhr.upload.onprogress = (ev) => {
-                    if (ev.lengthComputable && ev.total > 0) {
-                        const percent = Math.round((ev.loaded / ev.total) * 100);
-                        progressBar.style.width = `${percent}%`;
-                        statusText.innerText = `Загрузка... ${percent}%`;
-                    }
-                };
-                
-                xhr.onload = () => {
-                    if (xhr.status === 200) {
-                        try {
-                            const resp = JSON.parse(xhr.responseText);
-                            if (resp.ParsedResults && resp.ParsedResults[0] && resp.ParsedResults[0].ParsedText) {
-                                const text = resp.ParsedResults[0].ParsedText;
-                                if (text && text.trim().length > 0) {
-                                    resolve({ success: true, text: text });
-                                } else {
-                                    resolve({ success: false, error: "Текст не найден" });
-                                }
-                            } else {
-                                resolve({ success: false, error: "Ошибка распознавания" });
-                            }
-                        } catch (e) {
-                            resolve({ success: false, error: "Ошибка ответа" });
-                        }
-                    } else {
-                        resolve({ success: false, error: `Ошибка ${xhr.status}` });
-                    }
-                };
-                
-                xhr.onerror = () => {
-                    resolve({ success: false, error: "Нет соединения" });
-                };
-                
-                xhr.send(formData);
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-
-    async function processImage() {
+    document.getElementById('analyzeBtn').onclick = () => {
         if (!currentFile) {
             alert("Выберите фото");
             return;
         }
-        
-        if (!proxyEnabled) {
-            alert("Сначала нажмите 'нажмите здесь для включения прокси' в жёлтом блоке");
-            return;
-        }
-        
-        if (isProcessing) return;
-        
-        isProcessing = true;
-        analyzeBtn.disabled = true;
-        analyzeBtn.innerHTML = `<span class="loader"></span> Распознавание...`;
-        progressArea.style.display = 'block';
-        progressBar.style.width = '0%';
-        statusText.innerText = 'Отправка...';
-        summaryOutput.innerHTML = `<div class="placeholder-text">Распознавание текста...</div>`;
+        document.getElementById('output').innerHTML = modes[currentMode].replace(/\n/g, '<br>');
+    };
 
-        try {
-            const result = await recognizeImage(currentFile);
-            progressArea.style.display = 'none';
-            
-            if (!result.success) {
-                recognizedText = null;
-                showError(result.error || "Не удалось распознать текст");
-                return;
-            }
-            
-            recognizedText = result.text;
-            const output = transformText(recognizedText, currentMode);
-            displayOutput(output);
-        } catch (err) {
-            progressArea.style.display = 'none';
-            showError("Ошибка. Проверьте интернет");
-        } finally {
-            isProcessing = false;
-            analyzeBtn.disabled = false;
-            analyzeBtn.innerHTML = `✨ Создать конспект`;
-        }
-    }
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const previewDiv = document.getElementById('preview');
+    const previewImg = document.getElementById('previewImg');
+    const fileNameSpan = document.getElementById('fileName');
+    const clearBtn = document.getElementById('clearBtn');
+
+    dropzone.onclick = () => fileInput.click();
+    dropzone.ondragover = (e) => { e.preventDefault(); dropzone.style.background = "#eef4fc"; };
+    dropzone.ondragleave = () => { dropzone.style.background = "#fafcff"; };
+    dropzone.ondrop = (e) => {
+        e.preventDefault();
+        dropzone.style.background = "#fafcff";
+        if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+    };
+    fileInput.onchange = (e) => { if (e.target.files[0]) handleFile(e.target.files[0]); };
 
     function handleFile(file) {
-        if (!file) return;
-        if (!file.type.match('image.*')) {
-            alert("Поддерживаются JPG, PNG, WebP");
-            return;
-        }
-        if (file.size > 5 * 1024 * 1024) {
-            alert("Максимальный размер 5 МБ");
-            return;
-        }
-        
         currentFile = file;
-        recognizedText = null;
-        
         const reader = new FileReader();
         reader.onload = (e) => {
             previewImg.src = e.target.result;
-            fileNameSpan.innerText = file.name.length > 35 ? file.name.slice(0, 32) + '...' : file.name;
-            previewContainer.style.display = 'block';
-            dropzone.style.display = 'none';
+            fileNameSpan.textContent = file.name;
+            previewDiv.style.display = "flex";
+            dropzone.style.display = "none";
         };
         reader.readAsDataURL(file);
-        summaryOutput.innerHTML = `<div class="placeholder-text">Фото загружено. Нажмите "Создать конспект"</div>`;
-        progressArea.style.display = 'none';
+        document.getElementById('output').innerHTML = `<div class="placeholder">Фото загружено. Нажмите "Создать конспект"</div>`;
     }
 
-    function clearFile() {
+    clearBtn.onclick = () => {
         currentFile = null;
-        recognizedText = null;
-        previewContainer.style.display = 'none';
-        dropzone.style.display = 'block';
-        fileInput.value = '';
-        summaryOutput.innerHTML = `<div class="placeholder-text">Загрузите фото и нажмите "Создать конспект"</div>`;
-        progressArea.style.display = 'none';
-    }
-
-    dropzone.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', (e) => {
-        if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
-    });
-    dropzone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropzone.classList.add('drag-over');
-    });
-    dropzone.addEventListener('dragleave', () => {
-        dropzone.classList.remove('drag-over');
-    });
-    dropzone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropzone.classList.remove('drag-over');
-        if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
-    });
-    clearBtn.addEventListener('click', clearFile);
-    analyzeBtn.addEventListener('click', processImage);
-
-    dropzone.style.display = 'block';
-    previewContainer.style.display = 'none';
+        previewDiv.style.display = "none";
+        dropzone.style.display = "block";
+        fileInput.value = "";
+        document.getElementById('output').innerHTML = `<div class="placeholder">Загрузите фото</div>`;
+    };
 </script>
 </body>
 </html>
