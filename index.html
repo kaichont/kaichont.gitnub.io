@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ФотоКонспект — конспект по фото</title>
+    <title>ФотоКонспект — Tesseract OCR, реальное распознавание текста</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -12,14 +12,14 @@
             box-sizing: border-box;
         }
         body {
-            background: #f2f5f9;
+            background: #f0f4f9;
             font-family: 'Inter', sans-serif;
-            color: #1e2a3e;
+            color: #1a2a3f;
             line-height: 1.5;
-            padding: 2rem 1.5rem;
+            padding: 1.5rem;
         }
         .container {
-            max-width: 1280px;
+            max-width: 1300px;
             margin: 0 auto;
         }
         .header {
@@ -27,32 +27,32 @@
             margin-bottom: 2rem;
         }
         .header h1 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #1f4e6e, #0f3550);
+            background: linear-gradient(135deg, #1a4d6b, #0e3a52);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
         .header p {
             color: #4a627a;
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
         }
         .upload-card {
             background: white;
             border-radius: 28px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.04);
-            padding: 2rem;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            padding: 1.8rem;
             margin-bottom: 2rem;
         }
         .dropzone {
-            border: 2px dashed #cbdde9;
+            border: 2px dashed #bfd6e8;
             border-radius: 24px;
-            padding: 2.5rem 1.5rem;
+            padding: 2rem 1.5rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: 0.2s;
             background: #fefefe;
         }
         .dropzone:hover {
@@ -64,8 +64,8 @@
             background: #eef4fc;
         }
         .upload-icon {
-            font-size: 3rem;
-            margin-bottom: 0.7rem;
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
         }
         .upload-title {
             font-weight: 600;
@@ -93,15 +93,17 @@
             gap: 1rem;
         }
         .preview-img img {
-            width: 50px;
-            height: 50px;
+            width: 52px;
+            height: 52px;
             object-fit: cover;
             border-radius: 12px;
             background: #d9e2ec;
+            border: 1px solid #cbdbe0;
         }
         .file-name {
             font-size: 0.85rem;
             font-weight: 500;
+            word-break: break-all;
         }
         .clear-btn {
             background: none;
@@ -109,6 +111,7 @@
             font-size: 1.2rem;
             cursor: pointer;
             color: #8ba0b2;
+            padding: 0 8px;
         }
         .clear-btn:hover {
             color: #c2412c;
@@ -137,9 +140,6 @@
             color: white;
             box-shadow: 0 4px 12px rgba(31,94,126,0.25);
         }
-        .mode-btn:not(.active):hover {
-            background: #e2e9f2;
-        }
         .analyze-btn {
             background: linear-gradient(95deg, #1f5e7e, #12455f);
             width: 100%;
@@ -160,11 +160,12 @@
         .analyze-btn:disabled {
             background: #9eb7ca;
             cursor: not-allowed;
+            opacity: 0.7;
         }
         .result-card {
             background: white;
             border-radius: 28px;
-            box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
             padding: 1.7rem;
         }
         .result-header {
@@ -175,6 +176,7 @@
             padding-bottom: 0.7rem;
             margin-bottom: 1.2rem;
             flex-wrap: wrap;
+            gap: 8px;
         }
         .result-header h3 {
             font-weight: 600;
@@ -188,15 +190,20 @@
             font-weight: 500;
         }
         .summary-content {
-            font-size: 0.96rem;
+            font-size: 0.95rem;
             line-height: 1.55;
             white-space: pre-wrap;
             word-break: break-word;
+            background: #fefefe;
+            border-radius: 16px;
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 0.2rem;
         }
         .placeholder-text {
             color: #829ab0;
             text-align: center;
-            padding: 1.5rem 0;
+            padding: 2rem 0;
         }
         .error-message {
             background: #fff0ed;
@@ -204,6 +211,7 @@
             padding: 1rem;
             border-radius: 20px;
             font-weight: 500;
+            border-left: 4px solid #c2412c;
         }
         .loader {
             display: inline-block;
@@ -215,6 +223,26 @@
             animation: spin 0.7s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
+        .ocr-progress {
+            background: #e9ecef;
+            border-radius: 40px;
+            height: 6px;
+            width: 100%;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+        .ocr-progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #1f5e7e;
+            transition: width 0.2s;
+        }
+        .status-text {
+            font-size: 0.8rem;
+            color: #4a627a;
+            text-align: center;
+            margin-top: 6px;
+        }
         .footer-note {
             text-align: center;
             font-size: 0.7rem;
@@ -223,7 +251,7 @@
         }
         @media (max-width: 600px) {
             body { padding: 1rem; }
-            .upload-card { padding: 1.2rem; }
+            .upload-card { padding: 1rem; }
         }
     </style>
 </head>
@@ -231,15 +259,15 @@
 <div class="container">
     <div class="header">
         <h1>📷 ФотоКонспект</h1>
-        <p>Загрузите фото с текстом — ИИ распознает именно то, что написано, и составит конспект ключевых моментов</p>
+        <p>Настоящее распознавание текста с фото (Tesseract OCR). Конспект строится ТОЛЬКО из того, что написано на картинке.</p>
     </div>
 
     <div class="upload-card">
         <div class="dropzone" id="dropzone">
-            <div class="upload-icon">🖼️📄</div>
+            <div class="upload-icon">🖼️🔍</div>
             <div class="upload-title">Нажмите или перетащите фото</div>
-            <div class="upload-sub">JPG, PNG, WebP, HEIC (до 8 МБ)</div>
-            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" class="file-input">
+            <div class="upload-sub">JPG, PNG, WebP (до 8 МБ). Текст должен быть чётким.</div>
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" class="file-input">
         </div>
         <div id="previewContainer" style="display: none;">
             <div class="preview-area">
@@ -257,23 +285,32 @@
             <button class="mode-btn" data-mode="expand">🔍 Расширить</button>
         </div>
 
+        <div id="ocrProgressArea" style="display: none;">
+            <div class="ocr-progress"><div class="ocr-progress-bar" id="ocrProgressBar"></div></div>
+            <div class="status-text" id="ocrStatusText">Загрузка движка распознавания...</div>
+        </div>
+
         <button class="analyze-btn" id="analyzeBtn">✨ Распознать текст и сделать конспект</button>
     </div>
 
     <div class="result-card">
         <div class="result-header">
-            <h3>📌 Конспект (только из фото)</h3>
+            <h3>📌 Конспект (только с этого фото)</h3>
             <span class="badge-mode" id="activeModeLabel">Структурированный</span>
         </div>
         <div id="summaryOutput" class="summary-content">
-            <div class="placeholder-text">⬆️ Загрузите фото с текстом и нажмите кнопку. ИИ распознает написанное и выделит главное.</div>
+            <div class="placeholder-text">⬆️ Загрузите фото с текстом и нажмите «Распознать текст».<br>Tesseract прочитает реальные слова с картинки и составит конспект.</div>
         </div>
     </div>
-    <div class="footer-note">* Распознавание происходит по содержимому фото. Если текст не читается — система сообщит об ошибке.</div>
+    <div class="footer-note">
+        ⚡ Используется Tesseract.js — реальное OCR в браузере. Конспект делается ТОЛЬКО из распознанного текста.
+    </div>
 </div>
 
+<!-- Подключаем Tesseract.js из CDN -->
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
 <script>
-    // DOM
+    // DOM элементы
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('fileInput');
     const previewContainer = document.getElementById('previewContainer');
@@ -283,16 +320,20 @@
     const analyzeBtn = document.getElementById('analyzeBtn');
     const summaryOutput = document.getElementById('summaryOutput');
     const activeModeLabel = document.getElementById('activeModeLabel');
+    const ocrProgressArea = document.getElementById('ocrProgressArea');
+    const ocrProgressBar = document.getElementById('ocrProgressBar');
+    const ocrStatusText = document.getElementById('ocrStatusText');
 
     let currentImageFile = null;
-    let lastRecognizedText = null;     // сырой распознанный текст с фото (честный)
+    let currentRecognizedText = null;   // РЕАЛЬНЫЙ текст, распознанный с фото
     let isProcessing = false;
     let currentMode = 'struct';
+    let tesseractReady = true; // Tesseract загружается при первом использовании автоматически
 
     const modeNames = { summary: 'Сокращённый', struct: 'Структурированный', expand: 'Расширенный' };
     activeModeLabel.innerText = modeNames.struct;
 
-    // Переключение режимов
+    // Переключение режимов (меняем конспект на лету, если уже есть распознанный текст)
     document.querySelectorAll('.mode-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const mode = btn.dataset.mode;
@@ -301,147 +342,170 @@
                 document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 activeModeLabel.innerText = modeNames[currentMode];
-                if (lastRecognizedText) {
-                    const updated = transformRecognizedText(lastRecognizedText, currentMode);
-                    displayFormatted(updated);
+                if (currentRecognizedText && currentRecognizedText.trim().length > 0) {
+                    const transformed = transformTextByMode(currentRecognizedText, currentMode);
+                    displayFormattedSummary(transformed);
                 }
             }
         });
     });
 
-    // ----- ЧЕСТНОЕ РАСПОЗНАВАНИЕ (имитация, но с привязкой к данным фото и реальными фразами) -----
-    // Важно: конспект строится ТОЛЬКО из "извлечённого" текста. Никакой отсебятины.
-    // Функция анализирует бинарные данные фото, пытается "прочитать" текст. 
-    // Для демо мы генерируем правдоподобные фразы, основанные на уникальных характеристиках файла (хеш, имя, размер)
-    // чтобы имитировать "извлечение" именно из этого изображения. Если не вышло — ошибка.
-    async function extractTextFromPhoto(file) {
-        return new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onload = function(ev) {
-                setTimeout(() => {
-                    const base64 = ev.target.result;
-                    const hash = simpleHash(base64.slice(0, 400));
-                    const fileName = file.name;
-                    const fileSize = file.size;
-                    
-                    // Решаем, удалось ли "распознать" текст на фото (85% успеха при нормальном файле)
-                    const successSeed = (hash + fileSize) % 100;
-                    const isSuccess = successSeed < 85;
-                    
-                    if (!isSuccess) {
-                        resolve({ success: false, text: null, reason: "Не удалось распознать текст на фото. Снимок может быть размытым, слишком тёмным или не содержать читаемых символов." });
-                        return;
-                    }
-                    
-                    // ---- Имитация распознанного текста, который берётся ИСКЛЮЧИТЕЛЬНО из "содержимого" фото ----
-                    // Чтобы пользователь видел, что конспект относится к его файлу, генерируем фразы, "прочитанные" с изображения
-                    // с учётом имени файла и хеша (как будто разные фото дают разный текст)
-                    const topicsLibrary = [
-                        `Ключевые положения с фото:\n• Алгоритм принятия решений включает 5 этапов: определение проблемы, сбор данных, анализ альтернатив, выбор, реализация.\n• Ошибки: когнитивные искажения, группа мышления.\n• Метод Дельфи и мозговой штурм.`,
-                        `Распознанный фрагмент текста:\n1. Функции менеджмента: планирование, организация, мотивация, контроль.\n2. Принципы SMART: конкретность, измеримость, достижимость, актуальность, ограниченность во времени.\n3. Виды организационных структур.`,
-                        `Извлечённые тезисы:\n▫️ Закон спроса и предложения.\n▫️ Эластичность: виды и факторы.\n▫️ Рыночное равновесие и дефицит.\n▫️ Поведение потребителя: кардиналистский и ординалистский подход.`,
-                        `Текст с фотографии:\n— Жизненный цикл проекта: инициация, планирование, исполнение, мониторинг, завершение.\n— Диаграмма Ганта и критический путь.\n— Управление рисками: идентификация, оценка, реагирование.`,
-                        `Содержимое снимка:\n• Типы данных в Python: int, float, str, list, dict.\n• Условные операторы if/else.\n• Циклы for, while.\n• Функции def, lambda.`,
-                        `Расшифровка фото:\n+ Нейронные сети: входной слой, скрытые слои, выходной слой.\n+ Функции активации: ReLU, сигмоида.\n+ Градиентный спуск и обратное распространение ошибки.`
-                    ];
-                    let index = (hash + fileSize + fileName.length) % topicsLibrary.length;
-                    let recognizedRaw = topicsLibrary[index];
-                    // Добавляем служебную метку, что текст именно с этого фото
-                    recognizedRaw = `[Текст, распознанный с фото "${fileName}"]\n${recognizedRaw}`;
-                    resolve({ success: true, text: recognizedRaw });
-                }, 1400);
-            };
-            reader.readAsDataURL(file);
-        });
-    }
-    
-    function simpleHash(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-            hash = ((hash << 5) - hash) + str.charCodeAt(i);
-            hash |= 0;
+    // ----- ТРАНСФОРМАЦИЯ ТЕКСТА (работает ТОЛЬКО с распознанным текстом, ничего не выдумывает) -----
+    function transformTextByMode(recognizedText, mode) {
+        if (!recognizedText || recognizedText.trim() === "") {
+            return "⚠️ Распознанный текст отсутствует. Попробуйте загрузить более чёткое фото с текстом.";
         }
-        return Math.abs(hash);
-    }
-
-    // ---- Функции трансформации (только на основе распознанного текста, ничего не добавляют от себя) ----
-    function transformRecognizedText(rawText, mode) {
-        if (!rawText) return "Нет распознанного текста.";
-        // Убираем служебную метку для чистоты, но оставляем суть
-        let clean = rawText.replace(/\[Текст, распознанный с фото.*?\]\n?/i, '').trim();
-        if (!clean) return "Пустой распознанный текст.";
         
         if (mode === 'summary') {
-            return makeSummary(clean);
+            return generateSummary(recognizedText);
         } else if (mode === 'struct') {
-            return makeStructured(clean);
+            return generateStructured(recognizedText);
         } else if (mode === 'expand') {
-            return makeExpanded(clean);
+            return generateExpanded(recognizedText);
         }
-        return clean;
+        return recognizedText;
     }
     
-    function makeSummary(text) {
-        // Выделяем ключевые предложения (сокращаем)
-        let sentences = text.split(/(?<=[.!?])\s+/);
-        if (sentences.length <= 2) return "✂️ КЛЮЧЕВЫЕ МОМЕНТЫ (сокращённо):\n" + text;
-        let keepCount = Math.max(2, Math.ceil(sentences.length / 2.2));
-        let short = sentences.slice(0, keepCount).join(' ');
-        if (short.length > 550) short = short.slice(0, 520) + '…';
-        return "✂️ СОКРАЩЁННЫЙ КОНСПЕКТ (только главное с фото):\n\n" + short;
+    // Сокращённый конспект: выделяем ключевые предложения
+    function generateSummary(text) {
+        // Разбиваем на предложения
+        let sentences = text.split(/(?<=[.!?;:])\s+/);
+        if (sentences.length <= 2) {
+            // Если мало предложений, просто обрезаем до 400 символов
+            let short = text.length > 400 ? text.substring(0, 380) + '…' : text;
+            return "✂️ СОКРАЩЁННЫЙ КОНСПЕКТ (главное из фото):\n\n" + short;
+        }
+        // Берём примерно половину предложений (но не менее 2 и не более 8)
+        let keepCount = Math.min(8, Math.max(2, Math.ceil(sentences.length / 2)));
+        let summaryText = sentences.slice(0, keepCount).join(' ');
+        if (summaryText.length > 800) summaryText = summaryText.substring(0, 780) + '…';
+        return "✂️ СОКРАЩЁННЫЙ КОНСПЕКТ (ключевые моменты с фото):\n\n" + summaryText;
     }
     
-    function makeStructured(text) {
-        // Превращаем в структурированный список, группируем по строкам
+    // Структурированный: разбиваем на логические блоки, маркированные списки
+    function generateStructured(text) {
         let lines = text.split(/\n+/);
         let result = "📑 СТРУКТУРИРОВАННЫЙ КОНСПЕКТ (по тексту с фото)\n\n";
-        let bulletPoints = [];
+        let items = [];
+        
         for (let line of lines) {
             line = line.trim();
             if (line === "") continue;
-            if (line.match(/^[•\-*▫️▪️—·+0-9.]/)) {
-                bulletPoints.push(line);
-            } else if (line.length > 25 || line.includes(':')) {
-                bulletPoints.push(`• ${line}`);
-            } else {
-                bulletPoints.push(`• ${line}`);
+            // Если уже есть маркеры списка, оставляем как есть
+            if (line.match(/^[•\-*▪️▫️→✓✔️▶️▪▫•⇢]/)) {
+                items.push(line);
+            } 
+            // Длинные строки или строки с двоеточием делаем заголовками
+            else if (line.length > 40 || line.includes(':') || /[А-Я]/.test(line[0]) && line.length < 80) {
+                items.push(`📌 ${line}`);
+            }
+            else {
+                items.push(`   • ${line}`);
             }
         }
-        if (bulletPoints.length === 0) bulletPoints.push(`• ${text.substring(0, 200)}`);
-        result += bulletPoints.join('\n');
+        
+        if (items.length === 0) {
+            // Если нет разбивки, просто делаем маркированный список из слов
+            let words = text.split(/(?<=[.!?])\s+/);
+            for (let w of words.slice(0, 10)) {
+                if (w.trim()) items.push(`• ${w.trim()}`);
+            }
+        }
+        
+        result += items.join('\n');
+        if (result.length < 100) result += "\n(Текст с фото распознан, но структура минимальна)";
         return result;
     }
     
-    function makeExpanded(text) {
-        // Внимание: "расширить" — значит добавить только пояснения К РАСПОЗНАННОМУ ТЕКСТУ,
-        // но не придумывать новую тему. Расширяем за счёт перефразирования и лёгкой детализации на основе самого текста.
-        let paragraphs = text.split(/\n+/);
-        let expanded = "🔍 РАСШИРЕННЫЙ КОНСПЕКТ (подробнее на основе содержимого фото)\n\n";
-        for (let p of paragraphs) {
-            if (p.length === 0) continue;
-            expanded += p + "\n";
-            if (p.includes('планирование') || p.includes('управление')) {
-                expanded += "   (Деталь: планирование включает стратегическое и оперативное, управление охватывает все функции)\n";
-            } else if (p.includes('нейронные') || p.includes('градиент')) {
-                expanded += "   (Уточнение: градиентный спуск минимизирует функцию потерь, learning rate влияет на скорость)\n";
-            } else if (p.includes('спрос') || p.includes('предложение')) {
-                expanded += "   (Пояснение: равновесная цена формируется при пересечении кривых спроса и предложения)\n";
-            }
+    // Расширенный: добавляем небольшие пояснения на основе самого текста (не выдумываем новые темы)
+    function generateExpanded(text) {
+        let result = "🔍 РАСШИРЕННЫЙ КОНСПЕКТ (подробнее на основе содержимого фото)\n\n";
+        result += text;
+        
+        // Добавляем небольшие ремарки, основанные на ключевых словах из самого текста
+        let extraNotes = [];
+        if (text.toLowerCase().includes('планирование') || text.toLowerCase().includes('план')) {
+            extraNotes.push("📌 В тексте упоминается планирование — возможно, стоит детализировать этапы.");
         }
-        if (expanded.length < 250) expanded += "\n(На основе распознанного текста добавлены структурные акценты.)";
-        return expanded;
+        if (text.toLowerCase().includes('функция') || text.toLowerCase().includes('задача')) {
+            extraNotes.push("📌 Выделены функции или задачи — можно распределить по приоритетам.");
+        }
+        if (text.toLowerCase().includes('пример') || text.toLowerCase().includes('например')) {
+            extraNotes.push("📌 В исходном тексте есть примеры — они помогают лучше понять материал.");
+        }
+        if (text.toLowerCase().includes('важно') || text.toLowerCase().includes('ключевой')) {
+            extraNotes.push("⚠️ Текст содержит ключевые утверждения, на них стоит обратить внимание.");
+        }
+        
+        if (extraNotes.length > 0) {
+            result += "\n\n📎 Примечания на основе распознанного текста:\n" + extraNotes.map(n => `   ${n}`).join('\n');
+        }
+        
+        return result;
     }
     
-    function displayFormatted(htmlText) {
-        summaryOutput.innerHTML = htmlText.replace(/\n/g, '<br>');
+    function displayFormattedSummary(content) {
+        summaryOutput.innerHTML = content.replace(/\n/g, '<br>');
     }
     
-    function displayError(msg) {
-        summaryOutput.innerHTML = `<div class="error-message">⚠️ ${msg}</div>`;
+    function displayError(message) {
+        summaryOutput.innerHTML = `<div class="error-message">⚠️ ${message}</div>`;
     }
     
-    // --- Главный процесс: честное распознавание фото ---
-    async function handleAnalyze() {
+    // ----- РЕАЛЬНОЕ РАСПОЗНАВАНИЕ ЧЕРЕЗ TESSERACT.JS -----
+    async function recognizeTextWithTesseract(imageFile) {
+        return new Promise((resolve, reject) => {
+            // Показываем прогресс
+            ocrProgressArea.style.display = 'block';
+            ocrProgressBar.style.width = '0%';
+            ocrStatusText.innerText = 'Загрузка движка Tesseract...';
+            
+            // Создаём URL для изображения
+            const imgUrl = URL.createObjectURL(imageFile);
+            
+            // Используем Tesseract с русским и английским языками для лучшего распознавания
+            const worker = Tesseract.createWorker({
+                logger: m => {
+                    if (m.status === 'loading eng traineddata' || m.status === 'loading rus traineddata') {
+                        ocrStatusText.innerText = `Загрузка языковых моделей... ${Math.round(m.progress * 100)}%`;
+                        ocrProgressBar.style.width = `${m.progress * 100}%`;
+                    } else if (m.status === 'recognizing text') {
+                        ocrStatusText.innerText = `Распознавание текста с фото... ${Math.round(m.progress * 100)}%`;
+                        ocrProgressBar.style.width = `${m.progress * 100}%`;
+                    } else {
+                        ocrStatusText.innerText = m.status || 'Обработка...';
+                    }
+                }
+            });
+            
+            worker.load()
+                .then(() => worker.loadLanguage('rus+eng'))
+                .then(() => worker.initialize('rus+eng'))
+                .then(() => {
+                    ocrStatusText.innerText = 'Анализ изображения...';
+                    return worker.recognize(imgUrl);
+                })
+                .then(result => {
+                    worker.terminate();
+                    URL.revokeObjectURL(imgUrl);
+                    const recognized = result.data.text;
+                    if (!recognized || recognized.trim().length === 0) {
+                        resolve({ success: false, text: null, reason: "Tesseract не обнаружил текст на фото. Возможно, изображение слишком тёмное, размытое или текст нечитаем." });
+                    } else {
+                        resolve({ success: true, text: recognized });
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    worker.terminate();
+                    URL.revokeObjectURL(imgUrl);
+                    reject(err);
+                });
+        });
+    }
+    
+    // ---- Основной процесс ----
+    async function processPhotoAndRecognize() {
         if (!currentImageFile) {
             alert("Сначала загрузите фотографию с текстом.");
             return;
@@ -449,23 +513,31 @@
         if (isProcessing) return;
         isProcessing = true;
         analyzeBtn.disabled = true;
-        analyzeBtn.innerHTML = `<span class="loader"></span> Анализируем фото, распознаём текст...`;
-        summaryOutput.innerHTML = `<div class="placeholder-text">🔎 Читаем текст с фотографии...</div>`;
+        analyzeBtn.innerHTML = `<span class="loader"></span> Распознаём текст...`;
+        summaryOutput.innerHTML = `<div class="placeholder-text">🔍 Tesseract сканирует фото, извлекает реальный текст...</div>`;
         
         try {
-            const result = await extractTextFromPhoto(currentImageFile);
+            const result = await recognizeTextWithTesseract(currentImageFile);
+            ocrProgressArea.style.display = 'none';
+            
             if (!result.success) {
-                lastRecognizedText = null;
-                displayError(result.reason || "Текст на фото не распознан. Попробуйте более чёткое изображение с текстом.");
+                currentRecognizedText = null;
+                displayError(result.reason || "Не удалось распознать текст. Попробуйте другое фото с более чёткими буквами.");
                 return;
             }
-            lastRecognizedText = result.text;
-            const finalSummary = transformRecognizedText(lastRecognizedText, currentMode);
-            displayFormatted(finalSummary);
+            
+            currentRecognizedText = result.text;
+            console.log("Распознанный текст:", currentRecognizedText);
+            
+            // Формируем конспект ТОЛЬКО из распознанного текста
+            const finalSummary = transformTextByMode(currentRecognizedText, currentMode);
+            displayFormattedSummary(finalSummary);
+            
         } catch (err) {
             console.error(err);
-            lastRecognizedText = null;
-            displayError("Ошибка при обработке фото. Возможно, формат не поддерживается или файл повреждён.");
+            ocrProgressArea.style.display = 'none';
+            currentRecognizedText = null;
+            displayError("Ошибка при распознавании. Убедитесь, что фото содержит чёткий текст, и попробуйте снова.");
         } finally {
             isProcessing = false;
             analyzeBtn.disabled = false;
@@ -473,11 +545,11 @@
         }
     }
     
-    // --- Загрузка и предпросмотр файла ---
+    // --- Загрузка и превью файла ---
     function handleFile(file) {
         if (!file) return;
-        if (!file.type.match('image.*') && !file.name.match(/\.(heic|heif)$/i)) {
-            alert("Пожалуйста, загрузите изображение (JPEG, PNG, WebP, HEIC).");
+        if (!file.type.match('image.*')) {
+            alert("Пожалуйста, загрузите изображение (JPG, PNG, WebP).");
             return;
         }
         if (file.size > 8 * 1024 * 1024) {
@@ -485,28 +557,30 @@
             return;
         }
         currentImageFile = file;
-        lastRecognizedText = null;
+        currentRecognizedText = null;  // сбрасываем старый распознанный текст
         const reader = new FileReader();
         reader.onload = (e) => {
             previewImg.src = e.target.result;
-            fileNameSpan.innerText = file.name.length > 35 ? file.name.slice(0, 32)+'…' : file.name;
+            fileNameSpan.innerText = file.name.length > 38 ? file.name.slice(0, 35) + '…' : file.name;
             previewContainer.style.display = 'block';
             dropzone.style.display = 'none';
         };
         reader.readAsDataURL(file);
-        summaryOutput.innerHTML = `<div class="placeholder-text">✅ Фото загружено. Нажмите «Распознать текст и сделать конспект».</div>`;
+        summaryOutput.innerHTML = `<div class="placeholder-text">✅ Фото "${file.name}" загружено. Нажмите «Распознать текст».</div>`;
+        ocrProgressArea.style.display = 'none';
     }
     
     function clearFile() {
         currentImageFile = null;
-        lastRecognizedText = null;
+        currentRecognizedText = null;
         previewContainer.style.display = 'none';
         dropzone.style.display = 'block';
         fileInput.value = '';
-        summaryOutput.innerHTML = `<div class="placeholder-text">⬆️ Загрузите фото с текстом и нажмите кнопку. ИИ распознает написанное и выделит главное.</div>`;
+        summaryOutput.innerHTML = `<div class="placeholder-text">⬆️ Загрузите фото с текстом. Tesseract прочитает реальные слова и составит конспект.</div>`;
+        ocrProgressArea.style.display = 'none';
     }
     
-    // Events
+    // --- Инициализация событий ---
     dropzone.addEventListener('click', () => fileInput.click());
     fileInput.addEventListener('change', (e) => { if(e.target.files && e.target.files[0]) handleFile(e.target.files[0]); });
     dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('drag-over'); });
@@ -517,7 +591,7 @@
         if(e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
     });
     clearBtn.addEventListener('click', clearFile);
-    analyzeBtn.addEventListener('click', handleAnalyze);
+    analyzeBtn.addEventListener('click', processPhotoAndRecognize);
     
     dropzone.style.display = 'block';
     previewContainer.style.display = 'none';
